@@ -282,7 +282,7 @@ const Gallery = () => {
       title: 'Healthcare Outreach',
       description: 'Medical services for underserved communities',
       category: 'projects',
-      image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+      image: '/images/h1.jpeg'
     },
     {
       id: 6,
