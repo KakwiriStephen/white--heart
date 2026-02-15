@@ -270,6 +270,12 @@ const About = () => {
       bio: 'Tabitha manages administrative tasks and coordinates team activities for all charity programs.',
       image: '/images/sidi.jpeg'
     },
+    {
+      id: 6,
+      name: 'Gladys',
+      position: 'Social media Manager',
+      bio: 'Gladys shares case studies and testimonials from those the charity helps (while maintaining ethical dignity).',
+    }
   ];
 
   return (
