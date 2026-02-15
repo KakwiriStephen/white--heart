@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import styled from 'styled-components';
-import { FaHeart, FaHandsHelping, FaUsers, FaGlobeAmericas, FaPhone } from 'react-icons/fa';
+import { FaHeart, FaHandsHelping, FaUsers, FaGlobeAmericas } from 'react-icons/fa';
 
 // Common components
 import CounterSection from '../components/common/CounterSection';
