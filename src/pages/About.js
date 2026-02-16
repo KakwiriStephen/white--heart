@@ -281,7 +281,7 @@ const About = () => {
       name: 'Abigael Choni',
       position: 'Group Attorny',
       bio: 'Abigail handles the actual drafting of activities, negotiating, and daily legal tasks..',
-      image: 'public/images/abi.jpeg',
+      image: '/images/abi.jpeg',
     }
   ];
 
