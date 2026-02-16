@@ -272,9 +272,15 @@ const About = () => {
     },
     {
       id: 6,
-      name: 'Gladys',
+      name: 'Gladys Kambi',
       position: 'Social media Manager',
       bio: 'Gladys shares case studies and testimonials from those the charity helps (while maintaining ethical dignity).',
+    },
+    { 
+      id: 7,
+      name: 'Abigael Choni',
+      position: 'Group Attorny',
+      bio: 'Abigail handles the actual drafting of activities, negotiating, and daily legal tasks..',
     }
   ];
 
