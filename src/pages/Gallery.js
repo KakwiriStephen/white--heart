@@ -272,8 +272,8 @@ const Gallery = () => {
     },
     {
       id: 4,
-      title: 'Education Initiative',
-      description: 'Building schools and providing educational resources',
+      title: 'Prison Visit',
+      description: 'Visiting Prisoners and offering them some advise and support.',
       category: 'projects',
       image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
     },
