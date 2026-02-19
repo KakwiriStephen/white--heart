@@ -240,7 +240,7 @@ const About = () => {
       name: 'Kadzo Ngundi',
       position: 'Assistant Chair',
       bio: 'Kadzo supports the leadership team and ensures efficient resource allocation for all programs.',
-      image: 'https://img.freepik.com/premium-photo/white-cement-wall-texture-backgrounds_707519-24233.jpg'
+      image: '/images/Jackline.jpeg'
     },
     {
       id: 3,
@@ -275,6 +275,7 @@ const About = () => {
       name: 'Gladys Kambi',
       position: 'Social media Manager',
       bio: 'Gladys shares case studies and testimonials from those the charity helps (while maintaining ethical dignity).',
+      image: '/images/Gladys.jpeg'
     },
     { 
       id: 7,
