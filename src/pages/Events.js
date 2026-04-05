@@ -155,7 +155,7 @@ const UpcomingEvent = styled.div`
       transform: translateY(-3px);
     }
   }
-  .past-events-btn {
+  {
     background-color: #34db53;
     border-color: #3498db;
     c0lor: #fff;
@@ -172,8 +172,8 @@ const Events = () => {
         <Container>
           <h1>Events</h1>
           <div>
-            <button className="past-events-btn">Past Events</button>
-            <button className="upcoming-events-btn">Upcoming Events</button>
+            <styledButton>Past Events</styledButton>
+            <styledButton>Upcoming Events</styledButton>
           </div>
         </Container>
       </PageHeader>
