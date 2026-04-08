@@ -1,20 +1,7 @@
 import React from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Button,
-  Badge,
-  Form,
-} from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import styled from "styled-components";
-import {
-  FaCalendarAlt,
-  FaClock,
-  FaMapMarkerAlt,
-  FaSearch,
-} from "react-icons/fa";
+import { FaCalendarAlt, FaClock, FaMapMarkerAlt } from "react-icons/fa";
 
 const PageHeader = styled.section`
   background:
@@ -31,31 +18,22 @@ const PageHeader = styled.section`
     font-weight: 700;
     margin-bottom: 20px;
   }
+`;
 
-  .breadcrumb {
-    background: transparent;
-    justify-content: center;
+const StyledButton = styled.button`
+  background-color: rgb(148, 231, 60);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: all 0.3s ease;
 
-    .breadcrumb-item {
-      color: rgba(255, 255, 255, 0.7);
-
-      &.active {
-        color: #fff;
-      }
-
-      a {
-        color: rgba(255, 255, 255, 0.7);
-        text-decoration: none;
-
-        &:hover {
-          color: #e74c3c;
-        }
-      }
-
-      & + .breadcrumb-item::before {
-        color: rgba(255, 255, 255, 0.7);
-      }
-    }
+  &:hover {
+    background-color: #e7b110;
+    color: #5d14dc;
   }
 `;
 
@@ -155,14 +133,6 @@ const UpcomingEvent = styled.div`
       transform: translateY(-3px);
     }
   }
-  {
-    background-color: #34db53;
-    border-color: #3498db;
-    c0lor: #fff;
-
-    &:hover {
-    }
-  }
 `;
 
 const Events = () => {
@@ -172,8 +142,8 @@ const Events = () => {
         <Container>
           <h1>Events</h1>
           <div>
-            <styledButton>Past Events</styledButton>
-            <styledButton>Upcoming Events</styledButton>
+            <StyledButton>Past Events</StyledButton>
+            <StyledButton>Upcoming Events</StyledButton>
           </div>
         </Container>
       </PageHeader>
@@ -210,11 +180,10 @@ const Events = () => {
               We warmly invite you to join us for a special charity outreach at
               Malindi Prison on Dec 27th. On this day, we will come together to
               share compassion, encouragement, and hope with the inmates through
-              [activities such as food donations, toiletries, prayers,
-              mentorship talks, or music]. This visit is an opportunity to
-              remind those behind bars that they are not forgotten, and that
-              with love and guidance, everyone has a chance to rebuild their
-              lives.
+              activities such as food donations, toiletries, prayers, mentorship
+              talks, or music. This visit is an opportunity to remind those
+              behind bars that they are not forgotten, and that with love and
+              guidance, everyone has a chance to rebuild their lives.
             </p>
             <Button variant="primary" className="btn-register">
               Register Now
