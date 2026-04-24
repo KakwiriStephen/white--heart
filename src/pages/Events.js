@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import styled from "styled-components";
+import UpcomingEvents from "./UpcomingEvents";
 
 const PageHeader = styled.section`
   background:
@@ -36,18 +37,50 @@ const StyledButton = styled.button`
   }
 `;
 
+const EventsContainer = styled.div`
+  padding: 60px 0;
+  min-height: 400px;
+`;
+
 const Events = () => {
+  const [showUpcomingEvents, setShowUpcomingEvents] = useState(false);
+
+  const handleShowUpcomingEvents = () => {
+    setShowUpcomingEvents(true);
+  };
+
+  const handleShowPastEvents = () => {
+    setShowUpcomingEvents(false);
+  };
+
   return (
     <>
       <PageHeader>
         <Container>
           <h1>Events</h1>
           <div>
-            <StyledButton>Past Events</StyledButton>
-            <StyledButton>Upcoming Events</StyledButton>
+            <StyledButton onClick={handleShowPastEvents}>
+              Past Events
+            </StyledButton>
+            <StyledButton onClick={handleShowUpcomingEvents}>
+              Upcoming Events
+            </StyledButton>
           </div>
         </Container>
       </PageHeader>
+
+      <EventsContainer>
+        <Container>
+          {showUpcomingEvents ? (
+            <UpcomingEvents />
+          ) : (
+            <div>
+              <h2>Past Events</h2>
+              <p>Past events content coming soon!</p>
+            </div>
+          )}
+        </Container>
+      </EventsContainer>
     </>
   );
 };
