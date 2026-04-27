@@ -74,10 +74,16 @@ const Events = () => {
           {showUpcomingEvents ? (
             <UpcomingEvents />
           ) : (
-            <div>
+            <>
               <h2>Past Events</h2>
-              <p>Past events content coming soon!</p>
-            </div>
+              <div>
+                <img
+                  src="images/Prisonvisit.jpeg"
+                  alt=""
+                  className="event-image"
+                ></img>
+              </div>
+            </>
           )}
         </Container>
       </EventsContainer>
