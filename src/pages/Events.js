@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import styled from "styled-components";
 import UpcomingEvents from "./UpcomingEvents";
+import PastEvents from "./PastEvents";
 
 const PageHeader = styled.section`
   background:
@@ -43,14 +44,14 @@ const EventsContainer = styled.div`
 `;
 
 const Events = () => {
-  const [showUpcomingEvents, setShowUpcomingEvents] = useState(false);
+  const [selectedEventType, setSelectedEventType] = useState(null);
 
   const handleShowUpcomingEvents = () => {
-    setShowUpcomingEvents(true);
+    setSelectedEventType("upcoming");
   };
 
   const handleShowPastEvents = () => {
-    setShowUpcomingEvents(false);
+    setSelectedEventType("past");
   };
 
   return (
@@ -71,20 +72,8 @@ const Events = () => {
 
       <EventsContainer>
         <Container>
-          {showUpcomingEvents ? (
-            <UpcomingEvents />
-          ) : (
-            <>
-              <h2>Past Events</h2>
-              <div>
-                <img
-                  src="images/Prisonvisit.jpeg"
-                  alt=""
-                  className="event-image"
-                ></img>
-              </div>
-            </>
-          )}
+          {selectedEventType === "upcoming" && <UpcomingEvents />}
+          {selectedEventType === "past" && <PastEvents />}
         </Container>
       </EventsContainer>
     </>
