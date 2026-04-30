@@ -19,6 +19,7 @@ body {
 
 .main-content {
   flex: 1 0 auto;
+  padding-top: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -64,22 +65,21 @@ a:hover {
   border-color: #e74c3c;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+/* Hide Scrollbar Globally */
+html,
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #e74c3c;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #c0392b;
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 /* Animation Classes */

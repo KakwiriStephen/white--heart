@@ -274,7 +274,7 @@ const About = () => {
       id: 6,
       name: 'Gladys Kambi',
       position: 'Social media Manager',
-      bio: 'Gladys shares case studies and testimonials from those the charity helps (while maintaining ethical dignity).',
+      bio: 'Gladys shares case studies and testimonials from those the charity helps',
       image: '/images/Gladys.jpeg'
     },
     { 
