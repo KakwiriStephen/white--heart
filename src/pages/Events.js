@@ -24,7 +24,7 @@ const PageHeader = styled.section`
 const StyledButton = styled.button`
   background-color: #e74c3c;
   color: #fff;
-  border: none;
+  border: 1px solid #e74c3c;
   border-radius: 30px;
   padding: 10px 20px;
   font-weight: 600;
@@ -32,9 +32,13 @@ const StyledButton = styled.button`
   margin: 0 10px;
   transition: all 0.3s ease;
 
-  &:hover {
-    background-color: #e7b110;
-    color: #5d14dc;
+  &:hover,
+  &:focus {
+    background-color: #c0392b;
+    border-color: #c0392b;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -44,7 +48,7 @@ const EventsContainer = styled.div`
 `;
 
 const Events = () => {
-  const [selectedEventType, setSelectedEventType] = useState(null);
+  const [selectedEventType, setSelectedEventType] = useState("upcoming");
 
   const handleShowUpcomingEvents = () => {
     setSelectedEventType("upcoming");

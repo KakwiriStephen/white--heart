@@ -51,7 +51,7 @@ const NoEvents = styled.div`
   border-radius: 8px;
 
   h3 {
-    color: #5d14dc;
+    color: #333;
     margin-bottom: 15px;
   }
 
