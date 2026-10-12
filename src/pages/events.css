@@ -1,4 +1,5 @@
-.past-events-card {
+.past-events-card,
+.upcoming-events-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +11,8 @@
   max-width: 600px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
-.past-events-card:hover {
+.past-events-card:hover,
+.upcoming-events-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   cursor: pointer;
