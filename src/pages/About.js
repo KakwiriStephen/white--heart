@@ -241,15 +241,14 @@ const About = () => {
       name: "Taura Jiwe",
       position: "Chairperson",
       bio: "Taura leads WhiteHeart Charity with a vision to create sustainable change in communities worldwide.",
-      image: "/images/stonney.jpeg",
+      image: "/images/jiwe.jpeg",
     },
     {
       id: 2,
       name: "Kadzo Ngundi",
       position: "Assistant Chair",
       bio: "Kadzo supports the leadership team and ensures efficient resource allocation for all programs.",
-      image:
-        "https://img.freepik.com/premium-photo/white-cement-wall-texture-backgrounds_707519-24233.jpg",
+      image: "/images/Jackline.jpeg",
     },
     {
       id: 3,
