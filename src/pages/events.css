@@ -14,14 +14,14 @@
   display: flex;
   min-height: 380px;
   align-items: center;
-  max-width: 960px;
-  width: 100%;
-  margin: 0 auto;
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
   overflow: hidden;
   background:
     linear-gradient(rgba(20, 32, 28, 0.76), rgba(20, 32, 28, 0.76)),
     url("../../public/images/Homevisit.jpg") center / cover no-repeat;
-  border-radius: 16px;
+  border-radius: 0;
   box-shadow: 0 12px 32px rgba(44, 62, 80, 0.12);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -49,8 +49,9 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  width: min(100%, 680px);
-  padding: 48px;
+  width: min(100%, 960px);
+  margin: 0 auto;
+  padding: clamp(24px, 5vw, 56px);
 }
 
 .upcoming-event-label {
@@ -86,6 +87,42 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.upcoming-event-details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: 20px;
+}
+
+.upcoming-event-details p {
+  margin: 0;
+}
+
+.upcoming-event-date {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.upcoming-event-details .slogan {
+  padding-left: 14px;
+  border-left: 3px solid #ffd18a;
+  color: #ffd18a;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .upcoming-event-button {
@@ -140,7 +177,7 @@
 
 @media (max-width: 768px) {
   .upcoming-event-content {
-    padding: 36px 28px;
+    padding: 36px 24px;
   }
 }
 
@@ -163,5 +200,9 @@
 
   .upcoming-event-button {
     flex: 1 1 120px;
+  }
+
+  .upcoming-event-details {
+    flex-direction: column;
   }
 }

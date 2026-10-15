@@ -22,6 +22,8 @@ const UpcomingEvents = () => {
             <Link to="/contact" className="upcoming-event-button secondary">
               Join Us
             </Link>
+          </div>
+          <div className="upcoming-event-details">
             <p className="upcoming-event-date">
               This December, 2025 - Date to be confirmed
             </p>
