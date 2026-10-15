@@ -1,7 +1,4 @@
-@media screen and (max-width: 768px) {
-}
-.past-events-card,
-.upcoming-events-card {
+.past-events-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,11 +10,120 @@
   max-width: 600px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
-.past-events-card:hover,
+.upcoming-events-card {
+  display: flex;
+  min-height: 380px;
+  align-items: center;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(20, 32, 28, 0.76), rgba(20, 32, 28, 0.76)),
+    url("../../public/images/Homevisit.jpg") center / cover no-repeat;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(44, 62, 80, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.upcoming-events-section > h2 {
+  margin: 0 auto 24px;
+  color: #2c3e50;
+  text-align: center;
+}
+
 .upcoming-events-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
+  box-shadow: 0 18px 40px rgba(44, 62, 80, 0.18);
+}
+
+.upcoming-event-image {
+  width: 100%;
+  height: 100%;
+  min-height: 330px;
+  object-fit: cover;
+}
+
+.upcoming-event-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: min(100%, 680px);
+  padding: 48px;
+}
+
+.upcoming-event-label {
+  margin-bottom: 10px;
+  color: #ffd18a;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.upcoming-event-content h3 {
+  margin-bottom: 14px;
+  color: #fff;
+  font-size: 1.65rem;
+}
+
+.upcoming-event-content .event-description {
+  padding: 0;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  text-align: left;
+}
+
+.upcoming-event-location {
+  margin: 4px 0 22px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.upcoming-event-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.upcoming-event-button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border: 2px solid #e74c3c;
+  border-radius: 24px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.upcoming-event-button:hover {
+  transform: translateY(-2px);
+}
+
+.upcoming-event-button.primary {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.upcoming-event-button.primary:hover {
+  background: #c0392b;
+  border-color: #c0392b;
+  color: #fff;
+}
+
+.upcoming-event-button.secondary {
+  background: transparent;
+  color: #c0392b;
+}
+
+.upcoming-event-button.secondary:hover {
+  background: #fff2f0;
+  color: #a93226;
 }
 .event-image {
   width: 100%;
@@ -30,4 +136,32 @@
   color: #333;
   text-align: center;
   padding: 0 15px;
+}
+
+@media (max-width: 768px) {
+  .upcoming-event-content {
+    padding: 36px 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .upcoming-events-card {
+    min-height: 0;
+  }
+
+  .upcoming-event-content {
+    padding: 24px 20px;
+  }
+
+  .upcoming-event-content h3 {
+    font-size: 1.4rem;
+  }
+
+  .upcoming-event-actions {
+    width: 100%;
+  }
+
+  .upcoming-event-button {
+    flex: 1 1 120px;
+  }
 }
