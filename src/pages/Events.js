@@ -29,7 +29,8 @@ const StyledButton = styled.button`
   padding: 10px 20px;
   font-weight: 600;
   cursor: pointer;
-  margin: 0 10px;
+  min-height: 44px;
+  white-space: nowrap;
   transition: all 0.3s ease;
 
   &:hover,
@@ -39,6 +40,22 @@ const StyledButton = styled.button`
     color: #fff;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const EventButtonGroup = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+
+    ${StyledButton} {
+      width: min(100%, 240px);
+    }
   }
 `;
 
@@ -63,14 +80,14 @@ const Events = () => {
       <PageHeader>
         <Container>
           <h1>Events</h1>
-          <div>
+          <EventButtonGroup>
             <StyledButton onClick={handleShowPastEvents}>
               Past Events
             </StyledButton>
             <StyledButton onClick={handleShowUpcomingEvents}>
               Upcoming Events
             </StyledButton>
-          </div>
+          </EventButtonGroup>
         </Container>
       </PageHeader>
 

@@ -11,10 +11,83 @@ body {
   line-height: 1.6;
 }
 
+body[data-theme="dark"] {
+  color-scheme: dark;
+  background-color: #171a21;
+  color: #e8eaf0;
+}
+
 .App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+body[data-theme="dark"] .App,
+body[data-theme="dark"] .main-content {
+  background-color: #171a21;
+}
+
+body[data-theme="dark"] .navbar.bg-white {
+  background-color: #222733 !important;
+}
+
+body[data-theme="dark"] .navbar .navbar-brand,
+body[data-theme="dark"] .navbar .nav-link {
+  color: #e8eaf0 !important;
+}
+
+body[data-theme="dark"] .navbar .navbar-brand:hover,
+body[data-theme="dark"] .navbar .nav-link:hover,
+body[data-theme="dark"] .navbar .nav-link.active {
+  color: #e74c3c !important;
+}
+
+body[data-theme="dark"] .navbar-toggler {
+  border-color: #8992a3;
+}
+
+body[data-theme="dark"] .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12px;
+  border-radius: 50%;
+}
+
+body[data-theme="dark"] .theme-toggle {
+  color: #f5c542;
+  border-color: #8992a3;
+}
+
+body[data-theme="dark"] main section {
+  background-color: #1e232d !important;
+  color: #e8eaf0;
+}
+
+body[data-theme="dark"] main :is(h1, h2, h3, h4, h5, h6, p, li, label, small) {
+  color: #e8eaf0 !important;
+}
+
+body[data-theme="dark"] main :is(.card, [class*="-card"], .testimonial-item, .carousel-item > div) {
+  background-color: #292f3b;
+  color: #e8eaf0;
+}
+
+body[data-theme="dark"] main :is(input, textarea, select, .form-control, .form-select) {
+  background-color: #222733;
+  color: #e8eaf0;
+  border-color: #586174;
+}
+
+body[data-theme="dark"] main :is(input, textarea, select, .form-control, .form-select)::placeholder {
+  color: #b3bac8;
 }
 
 .main-content {

@@ -7,7 +7,7 @@ const PastEvents = () => {
       <h2>Past Events</h2>
       <div className="past-events-card">
         <img
-          src="images/Prisonvisit.jpeg"
+          src="/images/Prisonvisit.jpeg"
           alt="Past Event"
           className="event-image"
         ></img>

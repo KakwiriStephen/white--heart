@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
+import { FaMoon, FaSun } from "react-icons/fa";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledNavbar = styled(Navbar)`
   position: fixed;
@@ -13,21 +14,21 @@ const StyledNavbar = styled(Navbar)`
   padding-top: 2px;
   padding-bottom: 2px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  
+
   .navbar-brand {
     display: flex;
     align-items: center;
     gap: 15px;
     color: #333 !important;
     font-weight: 700;
-    
+
     img {
       width: 72px;
       height: 72px;
       object-fit: contain;
       margin-top: -10px;
     }
-    
+
     span {
       font-size: 1.5rem;
       font-weight: 600;
@@ -44,20 +45,20 @@ const StyledNavbar = styled(Navbar)`
     color: #333;
     font-weight: 500;
     transition: all 0.3s ease;
-    
+
     &:hover {
       color: #e74c3c;
     }
   }
-  
+
   .nav-link {
     font-weight: 500;
     margin: 0 10px;
     color: #333;
     position: relative;
-    
+
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       width: 0;
       height: 2px;
@@ -66,16 +67,17 @@ const StyledNavbar = styled(Navbar)`
       background-color: #e74c3c;
       transition: width 0.3s ease;
     }
-    
-    &.active, &:hover {
+
+    &.active,
+    &:hover {
       color: #e74c3c;
-      
+
       &:after {
         width: 100%;
       }
     }
   }
-  
+
   .donate-btn {
     background-color: #e74c3c;
     border-color: #e74c3c;
@@ -83,8 +85,9 @@ const StyledNavbar = styled(Navbar)`
     border-radius: 30px;
     font-weight: 600;
     transition: all 0.3s ease;
-    
-    &:hover, &:focus {
+
+    &:hover,
+    &:focus {
       background-color: #c0392b;
       border-color: #c0392b;
       transform: translateY(-2px);
@@ -95,35 +98,73 @@ const StyledNavbar = styled(Navbar)`
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
-  
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light",
+  );
+
   const closeNavbar = () => setExpanded(false);
-  
+
+  useEffect(() => {
+    document.body.dataset.theme = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   return (
     <StyledNavbar bg="white" expand="lg" expanded={expanded}>
       <Container>
         <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
-          <img src="images/wlogo.png" alt="WhiteHeart Charity Logo" width="70" height="70" />
+          <img
+            src="images/wlogo.png"
+            alt="WhiteHeart Charity Logo"
+            width="70"
+            height="70"
+          />
           <span>WhiteHeart</span>
         </Navbar.Brand>
-        <Navbar.Toggle 
-          aria-controls="basic-navbar-nav" 
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
           onClick={() => setExpanded(expanded ? false : "expanded")}
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
-            <Nav.Link as={NavLink} to="/about" onClick={closeNavbar}>About Us</Nav.Link>
-            <Nav.Link as={NavLink} to="/causes" onClick={closeNavbar}>Our Causes</Nav.Link>
-            <Nav.Link as={NavLink} to="/events" onClick={closeNavbar}>Events</Nav.Link>
-            <Nav.Link as={NavLink} to="/gallery" onClick={closeNavbar}>Gallery</Nav.Link>
-            <Nav.Link as={NavLink} to="/contact" onClick={closeNavbar}>Contact</Nav.Link>
+            <Nav.Link as={NavLink} to="/about" onClick={closeNavbar}>
+              About Us
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/causes" onClick={closeNavbar}>
+              Our Causes
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/events" onClick={closeNavbar}>
+              Events
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/gallery" onClick={closeNavbar}>
+              Gallery
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/contact" onClick={closeNavbar}>
+              Contact
+            </Nav.Link>
           </Nav>
-          <Button 
-            as={Link} 
-            to="/donate" 
+          <Button
+            as={Link}
+            to="/donate"
             className="donate-btn"
             onClick={closeNavbar}
           >
             Donate Now
+          </Button>
+          <Button
+            type="button"
+            className="theme-toggle"
+            variant="outline-secondary"
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+            aria-pressed={theme === "dark"}
+            title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+          >
+            {theme === "light" ? (
+              <FaMoon aria-hidden="true" />
+            ) : (
+              <FaSun aria-hidden="true" />
+            )}
           </Button>
         </Navbar.Collapse>
       </Container>
