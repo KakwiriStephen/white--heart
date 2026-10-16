@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import React from "react";
 import { Modal, Container, Row, Col } from "react-bootstrap";
 import styled from "styled-components";
 import { FaCopy, FaCheck } from "react-icons/fa";
+=======
+import React from 'react';
+import { Modal, Container, Row, Col } from 'react-bootstrap';
+import styled from 'styled-components';
+import { FaCopy, FaCheck } from 'react-icons/fa';
+>>>>>>> upstream/master
 
 const StyledModal = styled(Modal)`
   .modal-content {
