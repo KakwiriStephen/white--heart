@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Carousel } from 'react-bootstrap';
-import styled from 'styled-components';
-import { FaQuoteLeft } from 'react-icons/fa';
+import React, { useState } from "react";
+import { Container, Row, Col, Carousel } from "react-bootstrap";
+import styled from "styled-components";
+import { FaQuoteLeft } from "react-icons/fa";
 
 const TestimonialSection = styled.section`
   padding: 100px 0;
   background-color: #f9f9f9;
-  
+
   .section-title {
     text-align: center;
     margin-bottom: 60px;
-    
+
     h2 {
       font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 20px;
       position: relative;
       display: inline-block;
-      
+
       &:after {
-        content: '';
+        content: "";
         position: absolute;
         width: 70px;
         height: 3px;
@@ -29,30 +29,30 @@ const TestimonialSection = styled.section`
         transform: translateX(-50%);
       }
     }
-    
+
     p {
       max-width: 700px;
       margin: 0 auto;
       color: #666;
     }
   }
-  
+
   .carousel-indicators {
     bottom: -50px;
-    
+
     button {
       width: 12px;
       height: 12px;
       border-radius: 50%;
       background-color: #ddd;
       opacity: 1;
-      
+
       &.active {
         background-color: #e74c3c;
       }
     }
   }
-  
+
   .carousel-control-prev,
   .carousel-control-next {
     display: none;
@@ -66,15 +66,34 @@ const TestimonialItem = styled.div`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   text-align: center;
   margin: 0 auto;
-  max-width: 800px;
-  
+
+  @media (max-width: 767.98px) {
+    display: flex;
+    height: 440px;
+    flex-direction: column;
+    padding: 24px 20px;
+
+    .quote-icon,
+    .testimonial-author {
+      flex-shrink: 0;
+    }
+
+    .testimonial-text {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+  }
+
   .quote-icon {
     font-size: 2.5rem;
     color: #e74c3c;
     opacity: 0.2;
     margin-bottom: 20px;
   }
-  
+
   .testimonial-text {
     font-size: 1.2rem;
     color: #555;
@@ -82,7 +101,7 @@ const TestimonialItem = styled.div`
     font-style: italic;
     margin-bottom: 30px;
   }
-  
+
   .testimonial-author {
     .author-image {
       width: 80px;
@@ -91,20 +110,20 @@ const TestimonialItem = styled.div`
       margin: 0 auto 15px;
       overflow: hidden;
       border: 3px solid #e74c3c;
-      
+
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
     }
-    
+
     .author-name {
       font-size: 1.2rem;
       font-weight: 700;
       margin-bottom: 5px;
     }
-    
+
     .author-title {
       color: #777;
       font-size: 0.9rem;
@@ -114,11 +133,11 @@ const TestimonialItem = styled.div`
 
 const TestimonialSlider = () => {
   const [index, setIndex] = useState(0);
-  
+
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
-  
+
   // Sample testimonials data
   const testimonials = [
     {
@@ -126,51 +145,52 @@ const TestimonialSlider = () => {
       text: "Through their compassion, generosity, and selfless service, this charity continues to transform lives and restore smiles. Their work reminds us all of the power of kindness, unity, and giving back to those who need it most.",
       name: "Abigail Choni",
       title: "Member",
-      image: "/images/abi.jpeg"
+      image: "/images/abi.jpeg",
     },
     {
       id: 2,
       text: "This charity has touched countless lives with love, dignity, and hope. Their consistent support has not only met immediate needs but also restored faith and confidence in those who were struggling. They are truly making a real difference where it matters most",
       name: "Monica Migwambo",
       title: "Member",
-      image: "/images/monica.jpeg"
+      image: "/images/monica.jpeg",
     },
     {
       id: 3,
       text: "Their commitment to uplifting the vulnerable is truly inspiring; every effort brings positive change to the community",
       name: "Nila Washe",
       title: "Member",
-      image: "/images/nila.jpeg"
+      image: "/images/nila.jpeg",
     },
     {
       id: 3,
       text: "Through kindness and unwavering commitment, this charity changes lives and brings hope to those who need it most.",
       name: "Collins",
       title: "Member",
-      image: "/images/collo.jpeg"
-    }
+      image: "/images/collo.jpeg",
+    },
   ];
-  
+
   return (
     <TestimonialSection>
       <Container>
         <div className="section-title">
           <h2>What People Say</h2>
           <p>
-            Hear from the communities we've worked with, our volunteers, and our donors about the impact of our work around the world.
+            Hear from the communities we've worked with, our volunteers, and our
+            donors about the impact of our work around the world.
           </p>
         </div>
-        
+
         <Row className="justify-content-center">
           <Col lg={10}>
-            <Carousel 
-              activeIndex={index} 
+            <Carousel
+              activeIndex={index}
               onSelect={handleSelect}
               indicators={true}
               controls={false}
               interval={5000}
             >
-              {testimonials.map(testimonial => (
+              {testimonials.map((testimonial) => (
                 <Carousel.Item key={testimonial.id}>
                   <TestimonialItem>
                     <FaQuoteLeft className="quote-icon" />
