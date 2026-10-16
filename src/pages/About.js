@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import styled from "styled-components";
@@ -8,12 +7,6 @@ import {
   FaUsers,
   FaGlobeAmericas,
 } from "react-icons/fa";
-=======
-import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import styled from 'styled-components';
-import { FaHeart, FaHandsHelping, FaUsers, FaGlobeAmericas } from 'react-icons/fa';
->>>>>>> upstream/master
 
 // Common components
 import CounterSection from "../components/common/CounterSection";
@@ -252,17 +245,10 @@ const About = () => {
     },
     {
       id: 2,
-<<<<<<< HEAD
       name: "Kadzo Ngundi",
       position: "Assistant Chair",
       bio: "Kadzo supports the leadership team and ensures efficient resource allocation for all programs.",
       image: "/images/Jackline.jpeg",
-=======
-      name: 'Kadzo Ngundi',
-      position: 'Assistant Chair',
-      bio: 'Kadzo supports the leadership team and ensures efficient resource allocation for all programs.',
-      image: '/images/Jackline.jpeg'
->>>>>>> upstream/master
     },
     {
       id: 3,
@@ -280,17 +266,10 @@ const About = () => {
     },
     {
       id: 6,
-<<<<<<< HEAD
       name: "John Katana",
       position: "Treasurer",
       bio: "John manages our finances and ensures transparent financial reporting for all our programs.",
       image: "/images/john.jpeg",
-=======
-      name: 'John Katana',
-      position: 'Treasurer',
-      bio: 'John manages our finances and ensures transparent financial reporting for all our programs.',
-      image: '/images/john5.jpeg'
->>>>>>> upstream/master
     },
     {
       id: 5,

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import styled from "styled-components";
@@ -8,12 +7,6 @@ import {
   FaHandHoldingHeart,
   FaSmile,
 } from "react-icons/fa";
-=======
-// import React, { useState, useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import styled from 'styled-components';
-import { FaUsers, FaGlobeAmericas, FaHandHoldingHeart, FaSmile } from 'react-icons/fa';
->>>>>>> upstream/master
 
 const CounterWrapper = styled.section`
   background:
