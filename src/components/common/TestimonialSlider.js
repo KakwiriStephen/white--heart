@@ -95,7 +95,7 @@ const TestimonialItem = styled.div`
   }
 
   .testimonial-text {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #555;
     line-height: 1.8;
     font-style: italic;
@@ -142,14 +142,14 @@ const TestimonialSlider = () => {
   const testimonials = [
     {
       id: 1,
-      text: "Through their compassion, generosity, and selfless service, this charity continues to transform lives and restore smiles. Their work reminds us all of the power of kindness, unity, and giving back to those who need it most.",
+      text: "Their dedication to making a difference is truly inspiring. Every initiative they undertake brings hope, support, and positive change to countless lives.",
       name: "Abigail Choni",
       title: "Member",
       image: "/images/abi.jpeg",
     },
     {
       id: 2,
-      text: "This charity has touched countless lives with love, dignity, and hope. Their consistent support has not only met immediate needs but also restored faith and confidence in those who were struggling. They are truly making a real difference where it matters most",
+      text: "Their dedication to making a difference is truly inspiring. Every initiative they undertake brings hope, support, and positive change to countless lives.",
       name: "Monica Migwambo",
       title: "Member",
       image: "/images/monica.jpeg",
@@ -162,7 +162,7 @@ const TestimonialSlider = () => {
       image: "/images/nila.jpeg",
     },
     {
-      id: 3,
+      id: 4,
       text: "Through kindness and unwavering commitment, this charity changes lives and brings hope to those who need it most.",
       name: "Collins",
       title: "Member",
