@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import styled from "styled-components";
@@ -8,13 +7,6 @@ import {
   FaUsers,
   FaGlobeAmericas,
 } from "react-icons/fa";
-=======
-import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import styled from 'styled-components';
-import { FaHeart, FaHandsHelping, FaUsers, FaGlobeAmericas } from 'react-icons/fa';
->>>>>>> upstream/master
-
 // Common components
 import CounterSection from "../components/common/CounterSection";
 
@@ -252,17 +244,10 @@ const About = () => {
     },
     {
       id: 2,
-<<<<<<< HEAD
       name: "Kadzo Ngundi",
       position: "Assistant Chair",
       bio: "Kadzo supports the leadership team and ensures efficient resource allocation for all programs.",
       image: "/images/Jackline.jpeg",
-=======
-      name: 'Kadzo Ngundi',
-      position: 'Assistant Chair',
-      bio: 'Kadzo supports the leadership team and ensures efficient resource allocation for all programs.',
-      image: '/images/Jackline.jpeg'
->>>>>>> upstream/master
     },
     {
       id: 3,
@@ -279,40 +264,33 @@ const About = () => {
       image: "/images/fay.jpeg",
     },
     {
-      id: 6,
-<<<<<<< HEAD
+      id: 5,
       name: "John Katana",
       position: "Treasurer",
       bio: "John manages our finances and ensures transparent financial reporting for all our programs.",
-      image: "/images/john.jpeg",
-=======
-      name: 'John Katana',
-      position: 'Treasurer',
-      bio: 'John manages our finances and ensures transparent financial reporting for all our programs.',
-      image: '/images/john5.jpeg'
->>>>>>> upstream/master
+      image: "/images/john5.jpeg",
     },
     {
-      id: 5,
+      id: 6,
       name: "Tabitha Sidi",
       position: "Secretary",
       bio: "Tabitha manages administrative tasks and coordinates team activities for all charity programs.",
       image: "/images/sidi.jpeg",
     },
     {
-      id: 6,
-      name: 'Gladys Kambi',
-      position: 'Social media Manager',
-      bio: 'Gladys shares case studies and testimonials from those the charity helps',
-      image: '/images/Gladys.jpeg'
-    },
-    { 
       id: 7,
-      name: 'Abigael Choni',
-      position: 'Group Attorny',
-      bio: 'Abigail handles the actual drafting of activities, negotiating, and daily legal tasks..',
-      image: '/images/abi.jpeg',
-    }
+      name: "Gladys Kambi",
+      position: "Social media Manager",
+      bio: "Gladys shares case studies and testimonials from those the charity helps",
+      image: "/images/Gladys.jpeg",
+    },
+    {
+      id: 8,
+      name: "Abigael Choni",
+      position: "Group Attorny",
+      bio: "Abigail handles the actual drafting of activities, negotiating, and daily legal tasks..",
+      image: "/images/abi.jpeg",
+    },
   ];
 
   return (

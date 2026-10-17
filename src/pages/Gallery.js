@@ -279,17 +279,11 @@ const Gallery = () => {
     },
     {
       id: 4,
-<<<<<<< HEAD
-      title: "Education Initiative",
-      description: "Building schools and providing educational resources",
+      title: "Prison Visit",
+      description:
+        "Visiting Prisoners and offering them some advise and support.",
       category: "projects",
       image: "/images/Prisonvisit.jpeg",
-=======
-      title: 'Prison Visit',
-      description: 'Visiting Prisoners and offering them some advise and support.',
-      category: 'projects',
-      image: '/images/Prisonvisit.jpeg'
->>>>>>> upstream/master
     },
     {
       id: 5,

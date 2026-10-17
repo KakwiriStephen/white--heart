@@ -1,16 +1,7 @@
-<<<<<<< HEAD
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import styled from "styled-components";
 import { FaGraduationCap, FaHeartbeat, FaUtensils } from "react-icons/fa";
-=======
-import React from 'react';
-import { Container, Row, Col, Card} from 'react-bootstrap';
-import styled from 'styled-components';
-import { FaGraduationCap, FaHeartbeat, FaUtensils } from 'react-icons/fa';
->>>>>>> upstream/master
-// Remove the import line since we're using URL directly
-
 const PageHeader = styled.section`
   background:
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
