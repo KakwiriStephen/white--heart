@@ -80,6 +80,20 @@ body[data-theme="dark"] main :is(.card, [class*="-card"], .testimonial-item, .ca
   color: #e8eaf0;
 }
 
+body[data-theme="dark"] main .contact-info-card {
+  background-color: #f4f6fa !important;
+  border-color: #d9dee8;
+  color: #263244 !important;
+}
+
+body[data-theme="dark"] main .contact-info-card :is(h4, p, a) {
+  color: #263244 !important;
+}
+
+body[data-theme="dark"] main .contact-info-card a:hover {
+  color: #c0392b !important;
+}
+
 body[data-theme="dark"] main :is(input, textarea, select, .form-control, .form-select) {
   background-color: #222733;
   color: #e8eaf0;
