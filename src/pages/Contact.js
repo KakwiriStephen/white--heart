@@ -192,6 +192,20 @@ const ContactInfo = styled.div`
       }
     }
   }
+
+  body[data-theme="dark"] & .info-card {
+    background-color: #292f3b;
+    border-color: #3b4352;
+    color: #e8eaf0;
+
+    a {
+      color: #c2c8d3 !important;
+
+      &:hover {
+        color: #e74c3c !important;
+      }
+    }
+  }
 `;
 
 const MapSection = styled.section`
