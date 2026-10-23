@@ -111,7 +111,7 @@ const ContactForm = styled.div`
   }
 
   .form-label {
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .form-control {
@@ -201,7 +201,6 @@ const ContactInfo = styled.div`
       }
     }
   }
-
 `;
 
 const MapSection = styled.section`
