@@ -1,4 +1,3 @@
-import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import styled from "styled-components";
 import {
@@ -7,6 +6,7 @@ import {
   FaUsers,
   FaGlobeAmericas,
 } from "react-icons/fa";
+
 // Common components
 import CounterSection from "../components/common/CounterSection";
 
@@ -264,14 +264,14 @@ const About = () => {
       image: "/images/mawazo.jpeg",
     },
     {
-      id: 5,
+      id: 6,
       name: "John Katana",
       position: "Treasurer",
       bio: "John manages our finances and ensures transparent financial reporting for all our programs.",
       image: "/images/john5.jpeg",
     },
     {
-      id: 6,
+      id: 5,
       name: "Tabitha Sidi",
       position: "Secretary",
       bio: "Tabitha manages administrative tasks and coordinates team activities for all charity programs.",

@@ -1,7 +1,7 @@
-import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import styled from "styled-components";
 import { FaGraduationCap, FaHeartbeat, FaUtensils } from "react-icons/fa";
+
 const PageHeader = styled.section`
   background:
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
