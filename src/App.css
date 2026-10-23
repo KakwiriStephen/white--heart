@@ -81,13 +81,18 @@ body[data-theme="dark"] main :is(.card, [class*="-card"], .testimonial-item, .ca
 }
 
 body[data-theme="dark"] main .contact-info-card {
-  background-color: #f4f6fa !important;
-  border-color: #d9dee8;
-  color: #263244 !important;
+  background-color: #292f3b !important;
+  border-color: #3b4352;
+  color: #e8eaf0 !important;
 }
 
-body[data-theme="dark"] main .contact-info-card :is(h4, p, a) {
-  color: #263244 !important;
+body[data-theme="dark"] main .contact-info-card h4,
+body[data-theme="dark"] main .contact-info-card a {
+  color: #e8eaf0 !important;
+}
+
+body[data-theme="dark"] main .contact-info-card p {
+  color: #b3bac8 !important;
 }
 
 body[data-theme="dark"] main .contact-info-card a:hover {
