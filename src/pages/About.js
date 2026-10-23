@@ -258,10 +258,10 @@ const About = () => {
     },
     {
       id: 4,
-      name: "Faith Zawadi",
+      name: "Moses Mawazo",
       position: "Overseer",
-      bio: " Faith oversees program implementation and ensures quality standards are met across all initiatives.",
-      image: "/images/fay.jpeg",
+      bio: "Moses oversees program implementation and ensures quality standards are met across all initiatives.",
+      image: "/images/mawazo.jpeg",
     },
     {
       id: 5,
