@@ -1,8 +1,6 @@
-import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import styled from "styled-components";
 import { FaGraduationCap, FaHeartbeat, FaUtensils } from "react-icons/fa";
-// Remove the import line since we're using URL directly
 
 const PageHeader = styled.section`
   background:
