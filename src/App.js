@@ -15,6 +15,7 @@ import Donate from './pages/Donate';
 import Events from './pages/Events';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
+import Shop from './pages/Shop';
 import NotFound from './pages/NotFound';
 
 function AppLayout() {
@@ -29,6 +30,8 @@ function AppLayout() {
           <Route path="/donate" element={<Donate />} />
           <Route path="/events" element={<Events />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/shop/:productId" element={<Shop />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
