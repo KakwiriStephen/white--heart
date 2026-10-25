@@ -1,8 +1,15 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('scrolls to the top when navigating to another page', () => {
+  const scrollTo = jest
+    .spyOn(window, 'scrollTo')
+    .mockImplementation(() => {});
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  scrollTo.mockClear();
+  fireEvent.click(screen.getByRole('link', { name: /about us/i }));
+
+  expect(scrollTo).toHaveBeenCalledWith(0, 0);
+  scrollTo.mockRestore();
 });
