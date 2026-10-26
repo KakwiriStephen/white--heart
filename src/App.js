@@ -16,6 +16,7 @@ import Events from './pages/Events';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import Shop from './pages/Shop';
+import Members from './pages/Members';
 import NotFound from './pages/NotFound';
 
 function AppLayout() {
@@ -26,6 +27,7 @@ function AppLayout() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/members" element={<Members />} />
           <Route path="/causes" element={<Causes />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/events" element={<Events />} />
