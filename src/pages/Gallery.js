@@ -6,7 +6,7 @@ import { FaSearch, FaTimes } from "react-icons/fa";
 const PageHeader = styled.section`
   background:
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("https://images.unsplash.com/photo-1540575861501-4975c0f3649c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrGlcfX7Wc7z2VEC2XGzwRyXzRfvhwXgHo0ug7Wg17Hg&s=10")
       no-repeat center center;
   background-size: cover;
   padding: 150px 0 100px;

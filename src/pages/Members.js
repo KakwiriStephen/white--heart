@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "./members.css";
@@ -70,10 +70,6 @@ const Members = () => {
     (currentPage - 1) * MEMBERS_PER_PAGE,
     currentPage * MEMBERS_PER_PAGE,
   );
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   const goToPage = (page) => {
     setCurrentPage(page);

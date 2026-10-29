@@ -7,7 +7,7 @@ import PastEvents from "./PastEvents";
 const PageHeader = styled.section`
   background:
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzFcEXBXFNF1qQEmDqvSj-XjlV_CEfy1VVbdxjEeKqGg&s=10")
       no-repeat center center;
   background-size: cover;
   padding: 150px 0 100px;

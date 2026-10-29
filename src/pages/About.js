@@ -15,7 +15,7 @@ import CounterSection from "../components/common/CounterSection";
 const PageHeader = styled.section`
   background:
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("https://images.unsplash.com/photo-1469571486292-b53601021a68?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrQv9BFv0PtAqSRST_5AckTEe2pPmgwe9JPzTYNHcKSg&s=10")
       no-repeat center center;
   background-size: cover;
   padding: 150px 0 100px;
@@ -458,7 +458,7 @@ const About = () => {
             <Col lg={6} className="mb-5 mb-lg-0">
               <div className="story-image">
                 <img
-                  src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjzoVv2HUY3FiZxYQX_zAS7aih8ZCI_U2rZWednVdyMg&s=10"
                   alt="Our Story"
                 />
               </div>
