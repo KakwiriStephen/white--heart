@@ -139,6 +139,9 @@ const Header = () => {
             <Nav.Link as={NavLink} to="/gallery" onClick={closeNavbar}>
               Gallery
             </Nav.Link>
+            <Nav.Link as={NavLink} to="/shop" onClick={closeNavbar}>
+              Shop
+            </Nav.Link>
             <Nav.Link as={NavLink} to="/contact" onClick={closeNavbar}>
               Contact
             </Nav.Link>

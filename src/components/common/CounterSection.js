@@ -11,7 +11,7 @@ import {
 const CounterWrapper = styled.section`
   background:
     linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url("https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN0RjD1-aQDie0mGHpDsKwJwPMDYFxbSEw3VkH1OpLog&s=10")
       no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
@@ -47,7 +47,7 @@ const CounterSection = () => {
     { id: 2, value: 1, title: "Country Reached", icon: <FaGlobeAmericas /> },
     {
       id: 3,
-      value: 0.4,
+      value: 0.2,
       title: "Million Raised",
       icon: <FaHandHoldingHeart />,
     },

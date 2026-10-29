@@ -5,7 +5,7 @@ import { FaGraduationCap, FaHeartbeat, FaUtensils } from "react-icons/fa";
 const PageHeader = styled.section`
   background:
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")
+    url("https://images.unsplash.com/photo-1509099836639-18ba1795216d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")
       no-repeat center center;
   background-size: cover;
   padding: 150px 0 100px;

@@ -1,5 +1,18 @@
+<<<<<<< HEAD
+import React, { useLayoutEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+=======
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+>>>>>>> 1e4b84005a8c88ac12c1cfd1068b3e976b0aafea
+  useLocation,
+} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -15,20 +28,42 @@ import Donate from './pages/Donate';
 import Events from './pages/Events';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
+import Shop from './pages/Shop';
+import Members from './pages/Members';
 import NotFound from './pages/NotFound';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function AppLayout() {
+  const location = useLocation();
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
     <div className="App">
+      <ScrollToTop />
       <Header />
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/members" element={<Members />} />
           <Route path="/causes" element={<Causes />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/events" element={<Events />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/shop/:productId" element={<Shop />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

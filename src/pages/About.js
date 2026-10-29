@@ -1,11 +1,13 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
 import styled from "styled-components";
 import {
+  FaArrowRight,
   FaHeart,
   FaHandsHelping,
   FaUsers,
   FaGlobeAmericas,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 // Common components
 import CounterSection from "../components/common/CounterSection";
@@ -13,7 +15,7 @@ import CounterSection from "../components/common/CounterSection";
 const PageHeader = styled.section`
   background:
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("https://images.unsplash.com/photo-1469571486292-b53601021a68?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrQv9BFv0PtAqSRST_5AckTEe2pPmgwe9JPzTYNHcKSg&s=10")
       no-repeat center center;
   background-size: cover;
   padding: 150px 0 100px;
@@ -168,49 +170,95 @@ const StorySection = styled(Section)`
 const TeamSection = styled(Section)`
   background-color: #f9f9f9;
 
+  .members-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 14px;
+    padding: 13px 22px;
+    border: 1px solid #e74c3c;
+    border-radius: 3px;
+    background: #e74c3c;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+
+    &:hover,
+    &:focus-visible {
+      border-color: #c0392b;
+      background: #c0392b;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #a93226;
+      outline-offset: 3px;
+    }
+  }
+
   .team-card {
-    border: none;
-    border-radius: 10px;
+    height: 100%;
+    border: 1px solid #eee6e2;
+    border-radius: 2px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(43, 41, 40, 0.045);
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease;
 
     &:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(43, 41, 40, 0.1);
 
       .card-img-top {
-        transform: scale(1.05);
+        transform: scale(1.025);
       }
     }
 
     .card-img-top {
-      height: 350px;
+      height: 225px;
       width: 100%;
       object-fit: cover;
-      object-position: center top;
-      transition: transform 0.5s ease;
+      object-position: center 30%;
+      background: #ebe4e0;
+      transition: transform 0.35s ease;
     }
 
     .card-body {
-      padding: 25px;
-      text-align: center;
+      min-height: 158px;
+      padding: 17px 17px 19px;
+      text-align: left;
     }
 
     .card-title {
-      font-weight: 700;
-      margin-bottom: 5px;
+      margin: 0 0 6px;
+      color: #000;
+      font-family: "Marcellus", Georgia, serif;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.3;
     }
 
     .team-position {
-      color: #e74c3c;
+      margin: 0 0 10px;
+      color: #a87964;
+      font-family: "Inter", "Poppins", sans-serif;
+      font-size: 8px;
       font-weight: 600;
-      margin-bottom: 15px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .team-bio {
-      color: #666;
-      margin-bottom: 20px;
+      margin: 0;
+      color: #77716e;
+      font-family: "Inter", "Poppins", sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      line-height: 1.8;
     }
 
     .contact-info {
@@ -230,6 +278,41 @@ const TeamSection = styled(Section)`
       }
     }
   }
+
+  @media (max-width: 767px) {
+    .team-card .card-img-top {
+      height: 205px;
+    }
+
+    .team-card .card-body {
+      min-height: 145px;
+      padding: 15px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .team-card,
+    .team-card .card-img-top {
+      transition: none;
+    }
+  }
+
+  body[data-theme="dark"] & {
+    background-color: #171a21;
+
+    .team-card {
+      border-color: #3b4352;
+      background: #222733;
+
+      .card-title {
+        color: #f1f2f5;
+      }
+
+      .team-bio {
+        color: #b7bdc8;
+      }
+    }
+  }
 `;
 
 const About = () => {
@@ -239,56 +322,56 @@ const About = () => {
       id: 1,
       name: "Taura Jiwe",
       position: "Chairperson",
-      bio: "Taura leads WhiteHeart Charity with a vision to create sustainable change in communities worldwide.",
+      bio: "An Electrical Engineer with over 4 years of experience in project management and community development.He brings his expertise in management and leadership to the organization, ensuring that our initiatives are executed effectively and efficiently.",
       image: "/images/jiwe.jpeg",
     },
     {
       id: 2,
       name: "Kadzo Ngundi",
       position: "Assistant Chair",
-      bio: "Kadzo supports the leadership team and ensures efficient resource allocation for all programs.",
+      bio: "An Accountant with a passion for social work and community development, Kadzo brings financial expertise to our team.",
       image: "/images/Jackline.jpeg",
     },
     {
       id: 3,
       name: "Ralph Karanja",
-      position: "Secretary",
-      bio: "Ralph manages administrative tasks and coordinates team activities for all charity programs.",
+      position: " Asst Secretary",
+      bio: "A Teacher and Football coach,Ralph is dedicated to youth development and education, bringing a wealth of experience to our programs.",
       image: "/images/ralph.jpeg",
     },
     {
       id: 4,
       name: "Moses Mawazo",
       position: "Overseer",
-      bio: "Moses oversees program implementation and ensures quality standards are met across all initiatives.",
+      bio: "Moses is a Teacher and a Pastor, he is passionate about community service and has been instrumental in organizing our outreach programs.  ",
       image: "/images/mawazo.jpeg",
     },
     {
       id: 6,
       name: "John Katana",
       position: "Treasurer",
-      bio: "John manages our finances and ensures transparent financial reporting for all our programs.",
+      bio: "John is a Third year IT student at Kenyatta University,he is fervent about technology and its potential to drive social change, bringing a fresh perspective to our financial management.",
       image: "/images/john5.jpeg",
     },
     {
       id: 5,
       name: "Tabitha Sidi",
       position: "Secretary",
-      bio: "Tabitha manages administrative tasks and coordinates team activities for all charity programs.",
+      bio: "Tabitha is a cosmetologist with a background in community health and wellness, bringing a unique perspective to our programs.",
       image: "/images/sidi.jpeg",
     },
     {
       id: 7,
       name: "Gladys Kambi",
       position: "Social media Manager",
-      bio: "Gladys shares case studies and testimonials from those the charity helps",
+      bio: "Gladys is a Third year Education student at Kenyatta University, she is ardent about social media and its potential to drive social change, bringing a fresh perspective to our outreach programs.",
       image: "/images/Gladys.jpeg",
     },
     {
       id: 8,
       name: "Abigael Choni",
-      position: "Group Attorny",
-      bio: "Abigail handles the actual drafting of activities, negotiating, and daily legal tasks..",
+      position: "Group Attorney",
+      bio: "Abigail is a certified Advocate, she is zelous about social justice and its potential to drive social change, bringing a fresh perspective to our legal matters.",
       image: "/images/abi.jpeg",
     },
   ];
@@ -375,7 +458,7 @@ const About = () => {
             <Col lg={6} className="mb-5 mb-lg-0">
               <div className="story-image">
                 <img
-                  src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjzoVv2HUY3FiZxYQX_zAS7aih8ZCI_U2rZWednVdyMg&s=10"
                   alt="Our Story"
                 />
               </div>
@@ -428,7 +511,7 @@ const About = () => {
 
           <Row>
             {teamMembers.map((member) => (
-              <Col key={member.id} lg={4} md={6} className="mb-4">
+              <Col key={member.id} lg={3} md={6} className="mb-4">
                 <Card className="team-card">
                   <Card.Img
                     variant="top"
@@ -444,6 +527,12 @@ const About = () => {
               </Col>
             ))}
           </Row>
+          <div className="text-center">
+            <Link className="members-cta" to="/members">
+              Get to know our members
+              <FaArrowRight aria-hidden="true" />
+            </Link>
+          </div>
         </Container>
       </TeamSection>
     </>

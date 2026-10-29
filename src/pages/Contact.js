@@ -12,7 +12,7 @@ import {
 const PageHeader = styled.section`
   background:
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")
+    url("https://asanteafrica.org/wp-content/uploads/2026/10/web-banner2.png")
       no-repeat center center;
   background-size: cover;
   padding: 150px 0 100px;

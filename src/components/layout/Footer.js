@@ -224,7 +224,7 @@ const Footer = () => {
             <ul className="contact-info">
               <li>
                 <FaMapMarkerAlt />
-                <span>123 Charity Street, City, Country</span>
+                <span>Malindi, Kenya</span>
               </li>
               <li>
                 <FaPhone />
