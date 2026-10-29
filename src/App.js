@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 import React, { useLayoutEffect } from 'react';
 import {
   BrowserRouter as Router,
   Route,
   Routes,
-=======
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
->>>>>>> 1e4b84005a8c88ac12c1cfd1068b3e976b0aafea
   useLocation,
 } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -43,12 +35,6 @@ function ScrollToTop() {
 }
 
 function AppLayout() {
-  const location = useLocation();
-
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
-
   return (
     <div className="App">
       <ScrollToTop />
