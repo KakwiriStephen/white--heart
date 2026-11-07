@@ -1,215 +1,117 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Carousel } from "react-bootstrap";
-import styled from "styled-components";
-import { FaQuoteLeft } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import { FaArrowLeft, FaArrowRight, FaQuoteLeft } from "react-icons/fa";
+import "./TestimonialSlider.css";
 
-const TestimonialSection = styled.section`
-  padding: 100px 0;
-  background-color: #f9f9f9;
-
-  .section-title {
-    text-align: center;
-    margin-bottom: 60px;
-
-    h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      position: relative;
-      display: inline-block;
-
-      &:after {
-        content: "";
-        position: absolute;
-        width: 70px;
-        height: 3px;
-        background-color: #e74c3c;
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
-
-    p {
-      max-width: 700px;
-      margin: 0 auto;
-      color: #666;
-    }
-  }
-
-  .carousel-indicators {
-    bottom: -50px;
-
-    button {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background-color: #ddd;
-      opacity: 1;
-
-      &.active {
-        background-color: #e74c3c;
-      }
-    }
-  }
-
-  .carousel-control-prev,
-  .carousel-control-next {
-    display: none;
-  }
-`;
-
-const TestimonialItem = styled.div`
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 40px 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  text-align: center;
-  margin: 0 auto;
-
-  @media (max-width: 767.98px) {
-    display: flex;
-    height: 440px;
-    flex-direction: column;
-    padding: 24px 20px;
-
-    .quote-icon,
-    .testimonial-author {
-      flex-shrink: 0;
-    }
-
-    .testimonial-text {
-      display: flex;
-      flex: 1;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-  }
-
-  .quote-icon {
-    font-size: 2.5rem;
-    color: #e74c3c;
-    opacity: 0.2;
-    margin-bottom: 20px;
-  }
-
-  .testimonial-text {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.8;
-    font-style: italic;
-    margin-bottom: 30px;
-  }
-
-  .testimonial-author {
-    .author-image {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin: 0 auto 15px;
-      overflow: hidden;
-      border: 3px solid #e74c3c;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-
-    .author-name {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-
-    .author-title {
-      color: #777;
-      font-size: 0.9rem;
-    }
-  }
-`;
+const testimonials = [
+  {
+    id: 1,
+    text: "Their dedication to making a difference is truly inspiring. Every initiative they undertake brings hope, support, and positive change to countless lives.",
+    name: "Abigail Choni",
+    title: "Member",
+    image: "/images/abi.jpeg",
+  },
+  {
+    id: 2,
+    text: "Their dedication to making a difference is truly inspiring. Every initiative they undertake brings hope, support, and positive change to countless lives.",
+    name: "Monica Migwambo",
+    title: "Member",
+    image: "/images/monica.jpeg",
+  },
+  {
+    id: 3,
+    text: "Their commitment to uplifting the vulnerable is truly inspiring; every effort brings positive change to the community.",
+    name: "Nila Washe",
+    title: "Member",
+    image: "/images/nila.jpeg",
+  },
+  {
+    id: 4,
+    text: "Through kindness and unwavering commitment, this charity changes lives and brings hope to those who need it most.",
+    name: "Collins",
+    title: "Member",
+    image: "/images/collo.jpeg",
+  },
+];
 
 const TestimonialSlider = () => {
   const [index, setIndex] = useState(0);
+  const total = testimonials.length;
+  const current = testimonials[index];
 
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setIndex((currentIndex) => (currentIndex + 1) % total);
+    }, 6500);
+
+    return () => window.clearTimeout(timer);
+  }, [index, total]);
+
+  const goTo = (nextIndex) => {
+    setIndex(((nextIndex % total) + total) % total);
   };
 
-  // Sample testimonials data
-  const testimonials = [
-    {
-      id: 1,
-      text: "Their dedication to making a difference is truly inspiring. Every initiative they undertake brings hope, support, and positive change to countless lives.",
-      name: "Abigail Choni",
-      title: "Member",
-      image: "/images/abi.jpeg",
-    },
-    {
-      id: 2,
-      text: "Their dedication to making a difference is truly inspiring. Every initiative they undertake brings hope, support, and positive change to countless lives.",
-      name: "Monica Migwambo",
-      title: "Member",
-      image: "/images/monica.jpeg",
-    },
-    {
-      id: 3,
-      text: "Their commitment to uplifting the vulnerable is truly inspiring; every effort brings positive change to the community",
-      name: "Nila Washe",
-      title: "Member",
-      image: "/images/nila.jpeg",
-    },
-    {
-      id: 4,
-      text: "Through kindness and unwavering commitment, this charity changes lives and brings hope to those who need it most.",
-      name: "Collins",
-      title: "Member",
-      image: "/images/collo.jpeg",
-    },
-  ];
-
   return (
-    <TestimonialSection>
-      <Container>
-        <div className="section-title">
-          <h2>What People Say</h2>
+    <section className="wh-testimonials" aria-labelledby="testimonials-title">
+      <div className="wh-container">
+        <div className="wh-section-heading">
+          <span className="wh-eyebrow">VOICES FROM OUR COMMUNITY</span>
+          <h2 id="testimonials-title">What people say</h2>
           <p>
-            Hear from the communities we've worked with, our volunteers, and our
-            donors about the impact of our work around the world.
+            Hear from the communities we have worked with, our volunteers, and
+            the people who make our work possible.
           </p>
         </div>
 
-        <Row className="justify-content-center">
-          <Col lg={10}>
-            <Carousel
-              activeIndex={index}
-              onSelect={handleSelect}
-              indicators={true}
-              controls={false}
-              interval={5000}
+        <div className="wh-testimonials__stage">
+          <article className="wh-testimonial" key={current.id} aria-live="polite">
+            <FaQuoteLeft className="wh-testimonial__quote" aria-hidden="true" />
+            <p className="wh-testimonial__text">“{current.text}”</p>
+            <div className="wh-testimonial__author">
+              <img src={current.image} alt="" loading="lazy" />
+              <div>
+                <strong>{current.name}</strong>
+                <span>{current.title}</span>
+              </div>
+            </div>
+          </article>
+
+          <div className="wh-testimonials__nav">
+            <button
+              type="button"
+              className="wh-testimonials__arrow"
+              onClick={() => goTo(index - 1)}
+              aria-label="Previous testimonial"
             >
-              {testimonials.map((testimonial) => (
-                <Carousel.Item key={testimonial.id}>
-                  <TestimonialItem>
-                    <FaQuoteLeft className="quote-icon" />
-                    <p className="testimonial-text">{testimonial.text}</p>
-                    <div className="testimonial-author">
-                      <div className="author-image">
-                        <img src={testimonial.image} alt={testimonial.name} />
-                      </div>
-                      <h4 className="author-name">{testimonial.name}</h4>
-                      <p className="author-title">{testimonial.title}</p>
-                    </div>
-                  </TestimonialItem>
-                </Carousel.Item>
+              <FaArrowLeft aria-hidden="true" />
+            </button>
+
+            <div className="wh-testimonials__dots">
+              {testimonials.map((testimonial, dotIndex) => (
+                <button
+                  key={testimonial.id}
+                  type="button"
+                  className={`wh-testimonials__dot${
+                    dotIndex === index ? " is-active" : ""
+                  }`}
+                  onClick={() => goTo(dotIndex)}
+                  aria-label={`Show testimonial ${dotIndex + 1}`}
+                  aria-current={dotIndex === index ? "true" : undefined}
+                />
               ))}
-            </Carousel>
-          </Col>
-        </Row>
-      </Container>
-    </TestimonialSection>
+            </div>
+
+            <button
+              type="button"
+              className="wh-testimonials__arrow"
+              onClick={() => goTo(index + 1)}
+              aria-label="Next testimonial"
+            >
+              <FaArrowRight aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

@@ -1,0 +1,122 @@
+.not-found {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--wh-header) + 64px) 20px 80px;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(217, 77, 65, 0.1), transparent 46%),
+    linear-gradient(160deg, #fff8f5 0%, #f8e9e3 58%, #f3f3f3 100%);
+  color: var(--wh-ink);
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+
+.not-found__inner {
+  width: min(100%, 640px);
+}
+
+.not-found__art {
+  position: relative;
+  width: 240px;
+  height: 174px;
+  margin: 0 auto 8px;
+}
+
+.not-found__halo {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 174px;
+  height: 174px;
+  border: 1px solid rgba(217, 77, 65, 0.22);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateX(-50%);
+}
+
+.not-found__code {
+  position: relative;
+  z-index: 1;
+  display: block;
+  color: var(--wh-red);
+  font-size: clamp(86px, 14vw, 138px);
+  font-weight: 500;
+  letter-spacing: -0.09em;
+  line-height: 1;
+}
+
+.not-found__heart {
+  position: absolute;
+  z-index: 2;
+  top: 8px;
+  right: 4px;
+  display: flex;
+  width: 46px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 12px 26px rgba(103, 61, 49, 0.14);
+  color: var(--wh-red);
+  font-size: 16px;
+}
+
+.not-found h1 {
+  margin: 10px 0 12px;
+  color: var(--wh-ink);
+  font-size: clamp(29px, 4vw, 42px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+}
+
+.not-found p {
+  max-width: 460px;
+  margin: 0 auto 28px;
+  color: var(--wh-muted);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.85;
+}
+
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .not-found {
+    padding-top: calc(var(--wh-header) + 46px);
+  }
+
+  .not-found__art {
+    width: 200px;
+    height: 148px;
+  }
+
+  .not-found__halo {
+    width: 148px;
+    height: 148px;
+  }
+
+  .not-found__heart {
+    top: 2px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .not-found__actions {
+    width: 100%;
+  }
+
+  .not-found__actions .wh-btn {
+    flex: 1 1 150px;
+  }
+}

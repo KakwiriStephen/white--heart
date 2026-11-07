@@ -1,426 +1,291 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import styled from "styled-components";
-import { FaSearch, FaTimes } from "react-icons/fa";
+import React, { useCallback, useEffect, useState } from "react";
+import {
+  FaArrowLeft,
+  FaArrowRight,
+  FaChevronLeft,
+  FaChevronRight,
+  FaImages,
+  FaTimes,
+} from "react-icons/fa";
+import WhiteHeartPageBanner from "../components/common/WhiteHeartPageBanner";
+import "./Gallery.css";
 
-const PageHeader = styled.section`
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrGlcfX7Wc7z2VEC2XGzwRyXzRfvhwXgHo0ug7Wg17Hg&s=10")
-      no-repeat center center;
-  background-size: cover;
-  padding: 150px 0 100px;
-  color: #fff;
-  text-align: center;
+/* One album per event — each event holds as many photos as it needs. */
+const galleryEvents = [
+  {
+    id: "pad-drive",
+    title: "Pad Drive & School Visit",
+    location: "Mashamba Primary School, Malindi",
+    description:
+      "Distributing sanitary pads and school supplies, and talking with pupils about hygiene and staying in school.",
+    photos: [
+      { src: "/images/e1.jpeg", caption: "Handing out supplies at Mashamba Primary School." },
+      { src: "/images/e2.jpeg", caption: "Talking with pupils about hygiene and education." },
+    ],
+  },
+  {
+    id: "food-distribution",
+    title: "Food Distribution Drive",
+    location: "Malindi, Kilifi County",
+    description:
+      "Providing meals and food parcels to homeless and disaster-affected members of our community.",
+    photos: [
+      { src: "/images/f1.jpeg", caption: "Packing food parcels for distribution." },
+      { src: "/images/f2.jpeg", caption: "Delivering food to families in need." },
+    ],
+  },
+  {
+    id: "correctional-visit",
+    title: "Malindi Correctional Facility visit",
+    location: "Malindi, Kilifi County",
+    description:
+      "Members visited the Malindi Correctional Facility to learn about the challenges inmates face and discuss ways to support rehabilitation.",
+    photos: [
+      { src: "/images/Prisonvisit.jpeg", caption: "WhiteHeart members outside the facility." },
+    ],
+  },
+  {
+    id: "healthcare-outreach",
+    title: "Healthcare Outreach",
+    location: "Malindi, Kilifi County",
+    description:
+      "Working with health workers to bring basic medical services to underserved communities.",
+    photos: [
+      { src: "/images/h1.jpeg", caption: "Medical services during the outreach." },
+    ],
+  },
+  {
+    id: "mentorship-programme",
+    title: "Student Mentorship Programme",
+    location: "Malindi, Kilifi County",
+    description:
+      "Mentoring boys and girls on academic progress, confidence and personal development.",
+    photos: [
+      { src: "/images/m1.jpeg", caption: "A mentorship session with students." },
+    ],
+  },
+];
 
-  h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-
-  .breadcrumb {
-    background: transparent;
-    justify-content: center;
-
-    .breadcrumb-item {
-      color: rgba(255, 255, 255, 0.7);
-
-      &.active {
-        color: #fff;
-      }
-
-      a {
-        color: rgba(255, 255, 255, 0.7);
-        text-decoration: none;
-
-        &:hover {
-          color: #e74c3c;
-        }
-      }
-
-      & + .breadcrumb-item::before {
-        color: rgba(255, 255, 255, 0.7);
-      }
-    }
-  }
-`;
-
-const GallerySection = styled.section`
-  padding: 100px 0;
-
-  .section-title {
-    text-align: center;
-    margin-bottom: 60px;
-
-    h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      position: relative;
-      display: inline-block;
-
-      &:after {
-        content: "";
-        position: absolute;
-        width: 70px;
-        height: 3px;
-        background-color: #e74c3c;
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
-
-    p {
-      max-width: 700px;
-      margin: 0 auto;
-      color: #666;
-    }
-  }
-`;
-
-const FilterBar = styled.div`
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  padding: 25px;
-  margin-bottom: 40px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-
-  .filter-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-
-    .badge {
-      background-color: #fff;
-      color: #333;
-      border: 1px solid #ddd;
-      padding: 8px 15px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s ease;
-
-      &:hover,
-      &.active {
-        background-color: #e74c3c;
-        color: #fff;
-        border-color: #e74c3c;
-      }
-    }
-  }
-`;
-
-const GalleryGrid = styled.div`
-  .gallery-item {
-    margin-bottom: 30px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    position: relative;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    &:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-
-      .gallery-overlay {
-        opacity: 1;
-      }
-    }
-
-    img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .gallery-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(231, 76, 60, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: all 0.3s ease;
-
-      .overlay-content {
-        text-align: center;
-        color: #fff;
-        padding: 20px;
-
-        h4 {
-          font-weight: 700;
-          margin-bottom: 10px;
-        }
-
-        p {
-          margin-bottom: 15px;
-          font-size: 0.9rem;
-        }
-
-        .btn-view {
-          background-color: #fff;
-          color: #e74c3c;
-          border-radius: 30px;
-          padding: 8px 20px;
-          font-weight: 600;
-          transition: all 0.3s ease;
-
-          &:hover {
-            background-color: #333;
-            color: #fff;
-          }
-        }
-      }
-    }
-  }
-`;
-
-const LightboxOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 30px;
-
-  .lightbox-content {
-    position: relative;
-    max-width: 90%;
-    max-height: 90%;
-
-    img {
-      max-width: 100%;
-      max-height: 80vh;
-      display: block;
-      border-radius: 5px;
-    }
-
-    .lightbox-caption {
-      color: #fff;
-      text-align: center;
-      margin-top: 20px;
-
-      h4 {
-        font-weight: 700;
-        margin-bottom: 5px;
-      }
-
-      p {
-        color: rgba(255, 255, 255, 0.8);
-      }
-    }
-
-    .close-btn {
-      position: absolute;
-      top: -40px;
-      right: 0;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-
-      &:hover {
-        color: #e74c3c;
-        transform: rotate(90deg);
-      }
-    }
-  }
-`;
+const totalPhotos = galleryEvents.reduce(
+  (sum, event) => sum + event.photos.length,
+  0
+);
 
 const Gallery = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [lightbox, setLightbox] = useState({
-    isOpen: false,
-    currentImage: null,
-    currentTitle: "",
-    currentDescription: "",
-  });
+  const [activeEventId, setActiveEventId] = useState(null);
+  const [photoIndex, setPhotoIndex] = useState(null);
 
-  // Sample gallery data
-  const galleryItems = [
-    {
-      id: 1,
-      title: "Pad Drive Program",
-      description:
-        "Distributing sanitary pads to girls at Mashamba Primary School in Malindi",
-      category: "projects",
-      image: "/images/e1.jpeg",
-    },
-    {
-      id: 2,
-      title: "Mashamba Primary School Visit",
-      description:
-        "Supporting education and hygiene programs at Msabaha, Malindi",
-      category: "projects",
-      image: "/images/e2.jpeg",
-    },
-    {
-      id: 3,
-      title: "Student Mentorship Program",
-      description:
-        "Mentoring both boys and girls for academic and personal development",
-      category: "projects",
-      image: "/images/m1.jpeg",
-    },
-    {
-      id: 4,
-      title: "Prison Visit",
-      description:
-        "Visiting Prisoners and offering them some advise and support.",
-      category: "projects",
-      image: "/images/Prisonvisit.jpeg",
-    },
-    {
-      id: 5,
-      title: "Healthcare Outreach",
-      description: "Medical services for underserved communities",
-      category: "projects",
-      image: "/images/h1.jpeg",
-    },
-    {
-      id: 6,
-      title: "Food Distribution",
-      description: "Providing meals to homeless and disaster-affected people",
-      category: "projects",
-      image: "/images/f1.jpeg",
-    },
-  ];
+  const activeEvent = activeEventId
+    ? galleryEvents.find((event) => event.id === activeEventId)
+    : null;
 
-  // Filter gallery items by category
-  const filteredItems =
-    activeCategory === "all"
-      ? galleryItems
-      : galleryItems.filter((item) => item.category === activeCategory);
+  const closeLightbox = useCallback(() => setPhotoIndex(null), []);
 
-  // Categories for filter
-  const categories = [
-    { id: "all", label: "All Photos" },
-    { id: "projects", label: "Projects" },
-  ];
+  const stepPhoto = useCallback(
+    (step) => {
+      if (!activeEvent || photoIndex === null) return;
+      const count = activeEvent.photos.length;
+      setPhotoIndex((photoIndex + step + count) % count);
+    },
+    [activeEvent, photoIndex]
+  );
 
-  // Open lightbox
-  const openLightbox = (image, title, description) => {
-    setLightbox({
-      isOpen: true,
-      currentImage: image,
-      currentTitle: title,
-      currentDescription: description,
-    });
-    document.body.style.overflow = "hidden";
+  const openEvent = (id) => {
+    setActiveEventId(id);
+    setPhotoIndex(null);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Close lightbox
-  const closeLightbox = () => {
-    setLightbox({
-      ...lightbox,
-      isOpen: false,
-    });
-    document.body.style.overflow = "auto";
+  const closeEvent = () => {
+    setActiveEventId(null);
+    setPhotoIndex(null);
   };
+
+  useEffect(() => {
+    if (photoIndex === null) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowRight") stepPhoto(1);
+      if (event.key === "ArrowLeft") stepPhoto(-1);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.classList.add("gallery-lightbox-open");
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.classList.remove("gallery-lightbox-open");
+    };
+  }, [photoIndex, closeLightbox, stepPhoto]);
+
+  const lightboxPhoto =
+    activeEvent && photoIndex !== null ? activeEvent.photos[photoIndex] : null;
 
   return (
-    <>
-      <PageHeader>
-        <Container>
-          <h1>Our Gallery</h1>
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <a href="/">Home</a>
-              </li>
-              <li className="breadcrumb-item active" aria-current="page">
-                Gallery
-              </li>
-            </ol>
-          </nav>
-        </Container>
-      </PageHeader>
+    <div className="gallery-page">
+      <WhiteHeartPageBanner
+        eyebrow="MOMENTS THAT MATTER"
+        title="Our gallery."
+        description="Every event lives in its own album. Open a cover to browse all the moments from that day."
+        breadcrumb={[{ label: "GALLERY" }]}
+        icon={<FaImages />}
+        statValue={String(galleryEvents.length).padStart(2, "0")}
+        statLabel="Events captured"
+      />
 
-      <GallerySection>
-        <Container>
-          <div className="section-title">
-            <h2>Photo Gallery</h2>
-            <p>
-              Explore our gallery of images showcasing our projects, events, and
-              the incredible volunteers who make our work possible.
-            </p>
-          </div>
+      <section className="gallery-content wh-section">
+        <div className="wh-container">
+          {!activeEvent ? (
+            <>
+              <div className="wh-section-heading">
+                <span className="wh-eyebrow">PHOTO ALBUMS</span>
+                <h2>Life in our community</h2>
+                <p>
+                  {galleryEvents.length} events, {totalPhotos} photographs — the
+                  visits, projects and people that keep our hearts full.
+                </p>
+              </div>
 
-          <FilterBar>
-            <div className="filter-badges">
-              {categories.map((category) => (
-                <span
-                  key={category.id}
-                  className={`badge ${activeCategory === category.id ? "active" : ""}`}
-                  onClick={() => setActiveCategory(category.id)}
-                >
-                  {category.label}
-                </span>
-              ))}
-            </div>
-          </FilterBar>
-
-          <GalleryGrid>
-            <Row>
-              {filteredItems.map((item) => (
-                <Col key={item.id} lg={4} md={6} className="mb-4">
-                  <div
-                    className="gallery-item"
-                    onClick={() =>
-                      openLightbox(item.image, item.title, item.description)
-                    }
+              <div className="gallery-albums">
+                {galleryEvents.map((event) => (
+                  <button
+                    key={event.id}
+                    type="button"
+                    className="gallery-album"
+                    onClick={() => openEvent(event.id)}
+                    aria-label={`Open the ${event.title} album, ${event.photos.length} photos`}
                   >
-                    <img src={item.image} alt={item.title} />
-                    <div className="gallery-overlay">
-                      <div className="overlay-content">
-                        <h4>{item.title}</h4>
-                        <p>{item.description}</p>
-                        <Button className="btn-view">
-                          <FaSearch className="me-2" /> View Larger
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-              ))}
-            </Row>
-          </GalleryGrid>
-        </Container>
-      </GallerySection>
+                    <span className="gallery-album__media">
+                      <img
+                        src={event.photos[0].src}
+                        alt={event.title}
+                        loading="lazy"
+                      />
+                      <span className="gallery-album__count">
+                        <FaImages aria-hidden="true" />
+                        {String(event.photos.length).padStart(2, "0")}
+                      </span>
+                    </span>
+                    <span className="gallery-album__body">
+                      <span className="gallery-album__meta">
+                        {event.location}
+                      </span>
+                      <span className="gallery-album__title">
+                        {event.title}
+                      </span>
+                      <span className="gallery-album__desc">
+                        {event.description}
+                      </span>
+                      <span className="gallery-album__cta">
+                        View album <FaArrowRight aria-hidden="true" />
+                      </span>
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                className="gallery-back"
+                onClick={closeEvent}
+              >
+                <FaArrowLeft aria-hidden="true" /> All events
+              </button>
 
-      {lightbox.isOpen && (
-        <LightboxOverlay onClick={closeLightbox}>
-          <div
-            className="lightbox-content"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button className="close-btn" onClick={closeLightbox}>
-              <FaTimes />
+              <div className="gallery-event-head">
+                <span className="wh-eyebrow">{activeEvent.location}</span>
+                <h2>{activeEvent.title}</h2>
+                <p>{activeEvent.description}</p>
+                <span className="gallery-event-head__count">
+                  {String(activeEvent.photos.length).padStart(2, "0")} photos
+                </span>
+              </div>
+
+              <div className="gallery-grid">
+                {activeEvent.photos.map((photo, index) => (
+                  <button
+                    key={photo.src}
+                    type="button"
+                    className="gallery-card"
+                    onClick={() => setPhotoIndex(index)}
+                    aria-label={`View photo ${index + 1} of ${
+                      activeEvent.photos.length
+                    } larger`}
+                  >
+                    <img src={photo.src} alt={photo.caption} loading="lazy" />
+                    <span className="gallery-card__index">{index + 1}</span>
+                    <span className="gallery-card__overlay">
+                      <span className="gallery-card__desc">
+                        {photo.caption}
+                      </span>
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      </section>
+
+      {lightboxPhoto && (
+        <div
+          className="gallery-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeEvent.title}
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) closeLightbox();
+          }}
+        >
+          <div className="gallery-lightbox__bar">
+            <span className="gallery-lightbox__counter">
+              {photoIndex + 1} / {activeEvent.photos.length}
+            </span>
+            <button
+              type="button"
+              className="gallery-lightbox__close"
+              onClick={closeLightbox}
+              aria-label="Close image"
+              autoFocus
+            >
+              <FaTimes aria-hidden="true" />
             </button>
-            <img src={lightbox.currentImage} alt={lightbox.currentTitle} />
-            <div className="lightbox-caption">
-              <h4>{lightbox.currentTitle}</h4>
-              <p>{lightbox.currentDescription}</p>
-            </div>
           </div>
-        </LightboxOverlay>
+
+          {activeEvent.photos.length > 1 && (
+            <>
+              <button
+                type="button"
+                className="gallery-lightbox__nav gallery-lightbox__nav--prev"
+                onClick={() => stepPhoto(-1)}
+                aria-label="Previous photo"
+              >
+                <FaChevronLeft aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                className="gallery-lightbox__nav gallery-lightbox__nav--next"
+                onClick={() => stepPhoto(1)}
+                aria-label="Next photo"
+              >
+                <FaChevronRight aria-hidden="true" />
+              </button>
+            </>
+          )}
+
+          <figure className="gallery-lightbox__figure">
+            <img src={lightboxPhoto.src} alt={lightboxPhoto.caption} />
+            <figcaption className="gallery-lightbox__caption">
+              <strong>{activeEvent.title}</strong>
+              <span>{lightboxPhoto.caption}</span>
+            </figcaption>
+          </figure>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 

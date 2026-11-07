@@ -1,177 +1,106 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Navbar, Nav, Container, Button } from "react-bootstrap";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { FaBars, FaHeart, FaTimes } from "react-icons/fa";
+import "./Header.css";
 
-import styled from "styled-components";
-
-const StyledNavbar = styled(Navbar)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-
-  .navbar-brand {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    color: #333 !important;
-    font-weight: 700;
-
-    img {
-      width: 72px;
-      height: 72px;
-      object-fit: contain;
-      margin-top: -10px;
-    }
-
-    span {
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-  }
-
-  .navbar-brand:hover {
-    color: #e74c3c !important;
-    text-decoration: none;
-  }
-
-  .nav-link {
-    color: #333;
-    font-weight: 500;
-    transition: all 0.3s ease;
-
-    &:hover {
-      color: #e74c3c;
-    }
-  }
-
-  .nav-link {
-    font-weight: 500;
-    margin: 0 10px;
-    color: #333;
-    position: relative;
-
-    &:after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -2px;
-      left: 0;
-      background-color: #e74c3c;
-      transition: width 0.3s ease;
-    }
-
-    &.active,
-    &:hover {
-      color: #e74c3c;
-
-      &:after {
-        width: 100%;
-      }
-    }
-  }
-
-  .donate-btn {
-    background-color: #e74c3c;
-    border-color: #e74c3c;
-    padding: 8px 20px;
-    border-radius: 30px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-
-    &:hover,
-    &:focus {
-      background-color: #c0392b;
-      border-color: #c0392b;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-  }
-`;
+const navItems = [
+  { to: "/about", label: "About" },
+  { to: "/causes", label: "Causes" },
+  { to: "/events", label: "Events" },
+  { to: "/gallery", label: "Gallery" },
+  { to: "/shop", label: "Shop" },
+  { to: "/contact", label: "Contact" },
+];
 
 const Header = () => {
-  const [expanded, setExpanded] = useState(false);
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || "light",
-  );
-
-  const closeNavbar = () => setExpanded(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    document.body.dataset.theme = theme;
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.classList.toggle("wh-menu-open", menuOpen);
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.classList.remove("wh-menu-open");
+    };
+  }, [menuOpen]);
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <StyledNavbar bg="white" expand="lg" expanded={expanded}>
-      <Container>
-        <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
-          <img
-            src="images/wlogo.png"
-            alt="WhiteHeart Charity Logo"
-            width="70"
-            height="70"
-          />
-          <span>WhiteHeart</span>
-        </Navbar.Brand>
-        <Navbar.Toggle
-          aria-controls="basic-navbar-nav"
-          onClick={() => setExpanded(expanded ? false : "expanded")}
-        />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mx-auto">
-            <Nav.Link as={NavLink} to="/about" onClick={closeNavbar}>
-              About Us
-            </Nav.Link>
-            <Nav.Link as={NavLink} to="/causes" onClick={closeNavbar}>
-              Our Causes
-            </Nav.Link>
-            <Nav.Link as={NavLink} to="/events" onClick={closeNavbar}>
-              Events
-            </Nav.Link>
-            <Nav.Link as={NavLink} to="/gallery" onClick={closeNavbar}>
-              Gallery
-            </Nav.Link>
-            <Nav.Link as={NavLink} to="/shop" onClick={closeNavbar}>
-              Shop
-            </Nav.Link>
-            <Nav.Link as={NavLink} to="/contact" onClick={closeNavbar}>
-              Contact
-            </Nav.Link>
-          </Nav>
-          <Button
-            as={Link}
-            to="/donate"
-            className="donate-btn"
-            onClick={closeNavbar}
-          >
-            Donate Now
-          </Button>
-          <Button
+    <header className={`wh-header${menuOpen ? " is-open" : ""}`}>
+      <div className="wh-header__inner">
+        <Link to="/" className="wh-header__brand" onClick={closeMenu}>
+          <img src="/images/wlogo.png" alt="" aria-hidden="true" />
+          <span className="wh-header__brand-copy">
+            <strong>WhiteHeart</strong>
+            <small>CHARITY</small>
+          </span>
+        </Link>
+
+        <nav className="wh-header__nav" aria-label="Main navigation">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={({ isActive }) => (isActive ? "is-active" : undefined)}
+            >
+              {item.label}
+            </NavLink>
+          ))}
+        </nav>
+
+        <div className="wh-header__actions">
+          <Link to="/donate" className="wh-header__donate" onClick={closeMenu}>
+            <FaHeart aria-hidden="true" />
+            <span>Donate now</span>
+          </Link>
+          <button
+            className="wh-header__toggle"
             type="button"
-            className="theme-toggle"
-            variant="outline-secondary"
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-            aria-pressed={theme === "dark"}
-            title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+            aria-expanded={menuOpen}
+            aria-controls="wh-mobile-menu"
+            onClick={() => setMenuOpen((open) => !open)}
           >
-            {theme === "light" ? (
-              <FaMoon aria-hidden="true" />
-            ) : (
-              <FaSun aria-hidden="true" />
-            )}
-          </Button>
-        </Navbar.Collapse>
-      </Container>
-    </StyledNavbar>
+            {menuOpen ? <FaTimes aria-hidden="true" /> : <FaBars aria-hidden="true" />}
+            <span className="visually-hidden">
+              {menuOpen ? "Close menu" : "Open menu"}
+            </span>
+          </button>
+        </div>
+      </div>
+
+      {menuOpen && (
+        <div className="wh-header__mobile" id="wh-mobile-menu">
+          <nav aria-label="Mobile navigation">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  isActive ? "is-active" : undefined
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
+            <Link to="/donate" className="wh-header__mobile-donate" onClick={closeMenu}>
+              <FaHeart aria-hidden="true" /> Donate now
+            </Link>
+          </nav>
+        </div>
+      )}
+    </header>
   );
 };
 

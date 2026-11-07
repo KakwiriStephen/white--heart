@@ -1,33 +1,47 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaMapMarkerAlt } from "react-icons/fa";
 import "./events.css";
 
 const UpcomingEvents = () => {
   return (
-    <section className="upcoming-events-section">
-      <h2>Upcoming Events</h2>
-      <article className="upcoming-events-card">
-        <div className="upcoming-event-content">
-          <p className="upcoming-event-label">Community outreach</p>
+    <section className="events-panel" aria-labelledby="upcoming-events-title">
+      <div className="events-panel__heading">
+        <span className="wh-eyebrow">WHAT&apos;S NEXT</span>
+        <h2 id="upcoming-events-title">Upcoming events</h2>
+      </div>
+
+      <article className="event-feature">
+        <div className="event-feature__media">
+          <img
+            src="/images/Homevisit.jpg"
+            alt="WhiteHeart members visiting a children's home"
+            loading="lazy"
+          />
+          <span className="event-feature__tag">Community outreach</span>
+        </div>
+
+        <div className="event-feature__body">
+          <span className="event-feature__date">Date to be confirmed · December</span>
           <h3>Visit to Lea Mwana Children&apos;s Home</h3>
-          <p className="event-description">
+          <p className="event-feature__text">
             WhiteHeart Charity members are planning a visit to spend time with
             the children, share provisions, and support their ongoing welfare.
           </p>
-          <p className="upcoming-event-location">Thalathameli, Malindi</p>
-          <div className="upcoming-event-actions">
-            <Link to="/donate" className="upcoming-event-button primary">
+          <p className="event-feature__location">
+            <FaMapMarkerAlt aria-hidden="true" />
+            Thalathameli, Malindi
+          </p>
+          <blockquote className="event-feature__slogan">
+            “Let&apos;s make a child smile!”
+          </blockquote>
+          <div className="event-feature__actions">
+            <Link to="/donate" className="wh-btn wh-btn--primary">
               Donate
             </Link>
-            <Link to="/contact" className="upcoming-event-button secondary">
-              Join Us
+            <Link to="/contact" className="wh-btn wh-btn--outline">
+              Join us
             </Link>
-          </div>
-          <div className="upcoming-event-details">
-            <p className="upcoming-event-date">
-              This December, 2025 - Date to be confirmed
-            </p>
-            <p className="slogan">Lets make a Child smile!</p>
           </div>
         </div>
       </article>
