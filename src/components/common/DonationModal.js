@@ -1,210 +1,111 @@
-import React from "react";
-import { Modal, Container, Row, Col } from "react-bootstrap";
-import styled from "styled-components";
-import { FaCopy, FaCheck } from "react-icons/fa";
+import React, { useState } from "react";
+import { Modal } from "react-bootstrap";
+import { FaCheck, FaCopy, FaHeart } from "react-icons/fa";
+import "./DonationModal.css";
 
-const StyledModal = styled(Modal)`
-  .modal-content {
-    border-radius: 15px;
-    border: none;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  }
-
-  .modal-header {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-    color: white;
-    border-radius: 15px 15px 0 0;
-    border: none;
-    padding: 25px;
-
-    .modal-title {
-      font-weight: 700;
-      font-size: 1.5rem;
-    }
-  }
-
-  .modal-body {
-    padding: 30px;
-  }
-
-  .bank-details {
-    background: #f8f9fa;
-    border-radius: 10px;
-    padding: 25px;
-    margin: 20px 0;
-    border-left: 4px solid #e74c3c;
-  }
-
-  .bank-name {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 15px;
-  }
-
-  .detail-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #e9ecef;
-
-    &:last-child {
-      border-bottom: none;
-    }
-
-    .label {
-      font-weight: 600;
-      color: #495057;
-    }
-
-    .value {
-      font-family: "Courier New", monospace;
-      font-weight: 700;
-      color: #e74c3c;
-      font-size: 1.1rem;
-    }
-  }
-
-  .copy-btn {
-    background: #e74c3c;
-    border: none;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
-    margin-left: 10px;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background: #c0392b;
-      transform: translateY(-1px);
-    }
-  }
-
-  .instructions {
-    background: #e8f4fd;
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 20px;
-
-    h6 {
-      color: #2c3e50;
-      font-weight: 700;
-      margin-bottom: 15px;
-    }
-
-    ol {
-      margin: 0;
-      padding-left: 20px;
-
-      li {
-        margin-bottom: 8px;
-        color: #495057;
-        line-height: 1.5;
-      }
-    }
-  }
-`;
+const bankDetails = {
+  bank: "Diamond Trust Bank",
+  paybill: "516600",
+  account: "5067934001",
+};
 
 const DonationModal = ({ show, onHide }) => {
-  const [copied, setCopied] = React.useState({});
+  const [copied, setCopied] = useState({});
 
-  const copyToClipboard = (text, key) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopied({ ...copied, [key]: true });
-      setTimeout(() => {
-        setCopied({ ...copied, [key]: false });
+  const copyToClipboard = async (text, key) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied((current) => ({ ...current, [key]: true }));
+      window.setTimeout(() => {
+        setCopied((current) => ({ ...current, [key]: false }));
       }, 2000);
-    });
+    } catch {
+      setCopied((current) => ({ ...current, [key]: false }));
+    }
   };
 
-  const bankDetails = {
-    bank: "Diamond Trust Bank",
-    paybill: "516600",
-    account: "5067934001",
-  };
+  const renderDetail = (label, value, key) => (
+    <div className="wh-donate-modal__detail">
+      <div className="wh-donate-modal__detail-text">
+        <span>{label}</span>
+        <strong>{value}</strong>
+      </div>
+      <button
+        className={`wh-donate-modal__copy${copied[key] ? " is-copied" : ""}`}
+        type="button"
+        onClick={() => copyToClipboard(value, key)}
+        aria-label={`Copy ${label.toLowerCase()}`}
+      >
+        {copied[key] ? <FaCheck aria-hidden="true" /> : <FaCopy aria-hidden="true" />}
+      </button>
+    </div>
+  );
 
   return (
-    <StyledModal show={show} onHide={onHide} centered size="lg">
+    <Modal
+      show={show}
+      onHide={onHide}
+      centered
+      size="lg"
+      className="wh-donate-modal"
+      aria-labelledby="wh-donate-modal-title"
+    >
       <Modal.Header closeButton>
-        <Modal.Title>💝 Make a Donation</Modal.Title>
+        <div className="wh-donate-modal__heading">
+          <span className="wh-donate-modal__icon">
+            <FaHeart aria-hidden="true" />
+          </span>
+          <div>
+            <span className="wh-donate-modal__eyebrow">GIVE WITH HEART</span>
+            <Modal.Title id="wh-donate-modal-title">Make a donation</Modal.Title>
+          </div>
+        </div>
       </Modal.Header>
+
       <Modal.Body>
-        <Container>
-          <Row>
-            <Col>
-              <div className="text-center mb-4">
-                <h5 className="text-muted">Support WhiteHeart Charity</h5>
-                <p className="text-muted">
-                  Your contribution helps us make a difference in communities
-                  worldwide. Choose your preferred payment method below.
-                </p>
-              </div>
+        <p className="wh-donate-modal__intro">
+          Your contribution helps us bring care, opportunity, and hope to
+          communities in need. Give securely through M-Pesa using the details
+          below.
+        </p>
 
-              <div className="bank-details">
-                <div className="bank-name">🏦 {bankDetails.bank}</div>
+        <div className="wh-donate-modal__bank">
+          <div className="wh-donate-modal__bank-name">
+            <span className="wh-donate-modal__bank-icon">
+              <FaHeart aria-hidden="true" />
+            </span>
+            <div>
+              <span>BANK</span>
+              <strong>{bankDetails.bank}</strong>
+            </div>
+          </div>
+          {renderDetail("Paybill number", bankDetails.paybill, "paybill")}
+          {renderDetail("Account number", bankDetails.account, "account")}
+        </div>
 
-                <div className="detail-row">
-                  <span className="label">Paybill Number:</span>
-                  <div>
-                    <span className="value">{bankDetails.paybill}</span>
-                    <button
-                      className="copy-btn"
-                      onClick={() =>
-                        copyToClipboard(bankDetails.paybill, "paybill")
-                      }
-                    >
-                      {copied.paybill ? <FaCheck /> : <FaCopy />}
-                    </button>
-                  </div>
-                </div>
+        <div className="wh-donate-modal__instructions">
+          <h3>How to donate</h3>
+          <ol>
+            <li>Open the M-Pesa menu on your phone.</li>
+            <li>
+              Select <strong>Lipa na M-Pesa</strong>, then <strong>Pay Bill</strong>.
+            </li>
+            <li>
+              Enter paybill number <strong>{bankDetails.paybill}</strong>.
+            </li>
+            <li>
+              Enter account number <strong>{bankDetails.account}</strong>.
+            </li>
+            <li>Enter your amount and confirm with your M-Pesa PIN.</li>
+          </ol>
+        </div>
 
-                <div className="detail-row">
-                  <span className="label">Account Number:</span>
-                  <div>
-                    <span className="value">{bankDetails.account}</span>
-                    <button
-                      className="copy-btn"
-                      onClick={() =>
-                        copyToClipboard(bankDetails.account, "account")
-                      }
-                    >
-                      {copied.account ? <FaCheck /> : <FaCopy />}
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="instructions">
-                <h6>📱 How to Donate via M-Pesa:</h6>
-                <ol>
-                  <li>Go to M-Pesa menu on your phone</li>
-                  <li>Select "Lipa na M-Pesa"</li>
-                  <li>Choose "Pay Bill"</li>
-                  <li>
-                    Enter Paybill Number: <strong>{bankDetails.paybill}</strong>
-                  </li>
-                  <li>
-                    Enter Account Number: <strong>{bankDetails.account}</strong>
-                  </li>
-                  <li>Enter the amount you wish to donate</li>
-                  <li>Enter your M-Pesa PIN and confirm</li>
-                </ol>
-              </div>
-
-              <div className="text-center mt-4">
-                <p className="text-muted small">
-                  <strong>Thank you for your generosity!</strong>
-                  <br />
-                  Your donation helps us continue our mission of creating
-                  positive change.
-                </p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
+        <p className="wh-donate-modal__thanks">
+          Thank you for your generosity. Your gift helps us continue creating
+          positive change.
+        </p>
       </Modal.Body>
-    </StyledModal>
+    </Modal>
   );
 };
 

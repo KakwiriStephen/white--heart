@@ -1,16 +1,12 @@
-import React, { useLayoutEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 // Layout Components
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import ScrollToTop from './components/common/ScrollToTop';
 
 // Pages
 import Home from './pages/Home';
@@ -24,20 +20,9 @@ import Shop from './pages/Shop';
 import Members from './pages/Members';
 import NotFound from './pages/NotFound';
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
-}
-
 function AppLayout() {
   return (
     <div className="App">
-      <ScrollToTop />
       <Header />
       <main className="main-content">
         <Routes>
@@ -62,6 +47,7 @@ function AppLayout() {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <AppLayout />
     </Router>
   );
