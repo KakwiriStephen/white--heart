@@ -5,7 +5,7 @@ import "./members.css";
 
 const members = [
   { name: "Elina Kadzo Karisa", image: null },
-  { name: "Francis Bobi Katana", image: null },
+  { name: "Francis Bobi Katana", image: "/images/Bobby.jpeg" },
   { name: "Kakwiri Stephen Ngota", image: "/images/kakwir.jpeg" },
   { name: "Halima Ali Menza", image: null },
   { name: "Esther Kache Koi", image: null },
@@ -17,7 +17,7 @@ const members = [
   { name: "Julius Sifa", image: null },
   { name: "Marion Bahati Kazungu", image: null },
   { name: "Robert Chai", image: null },
-  { name: "Collins Kazungu", image: null },
+  { name: "Collins Kazungu", image: "/images/Collins-Tyga.jpeg" },
 ];
 
 const MEMBERS_PER_PAGE = 6;
@@ -50,7 +50,9 @@ function MemberProfile({ member, index }) {
           <span className="member-profile__number">
             {String(index + 1).padStart(2, "0")}
           </span>
-          <span className="member-profile__initials">{getInitials(member.name)}</span>
+          <span className="member-profile__initials">
+            {getInitials(member.name)}
+          </span>
           <small>PORTRAIT COMING SOON</small>
         </div>
       )}
@@ -95,9 +97,16 @@ const Members = () => {
               caring, committed community.
             </p>
           </div>
-          <div className="members-hero__count" aria-label={`${members.length} members`}>
+          <div
+            className="members-hero__count"
+            aria-label={`${members.length} members`}
+          >
             <strong>{String(members.length).padStart(2, "0")}</strong>
-            <span>MEMBERS<br />AND COUNTING</span>
+            <span>
+              MEMBERS
+              <br />
+              AND COUNTING
+            </span>
           </div>
         </div>
       </header>

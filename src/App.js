@@ -1,36 +1,28 @@
-<<<<<<< HEAD
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
-=======
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
->>>>>>> 1e4b84005a8c88ac12c1cfd1068b3e976b0aafea
   useLocation,
-} from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 // Layout Components
-import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 
 // Pages
-import Home from './pages/Home';
-import About from './pages/About';
-import Causes from './pages/Causes';
-import Donate from './pages/Donate';
-import Events from './pages/Events';
-import Gallery from './pages/Gallery';
-import Contact from './pages/Contact';
-import Shop from './pages/Shop';
-import Members from './pages/Members';
-import NotFound from './pages/NotFound';
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Causes from "./pages/Causes";
+import Donate from "./pages/Donate";
+import Events from "./pages/Events";
+import Gallery from "./pages/Gallery";
+import Contact from "./pages/Contact";
+import Shop from "./pages/Shop";
+import Members from "./pages/Members";
+import NotFound from "./pages/NotFound";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
