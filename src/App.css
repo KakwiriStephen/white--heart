@@ -1,175 +1,46 @@
-/* Global Styles */
+/* ==========================================================================
+   WhiteHeart Charity — global design system
+   Poppins · warm cream · WhiteHeart red
+   ========================================================================== */
+
+:root {
+  --wh-red: #d94d41;
+  --wh-red-dark: #b23c32;
+  --wh-red-soft: #f8e9e3;
+  --wh-cream: #f3f3f3;
+  --wh-warm: #fff8f5;
+  --wh-warm-strong: #f8e9e3;
+  --wh-ink: #2b2928;
+  --wh-ink-soft: #514744;
+  --wh-muted: #716765;
+  --wh-line: #e8ded9;
+  --wh-white: #ffffff;
+  --wh-shadow: 0 18px 45px rgba(103, 61, 49, 0.08);
+  --wh-radius: 4px;
+  --wh-header: 72px;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: "Poppins", sans-serif;
-  color: #333;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: var(--wh-ink);
+  background: var(--wh-cream);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body[data-theme="dark"] {
-  color-scheme: dark;
-  background-color: #171a21;
-  color: #e8eaf0;
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-body[data-theme="dark"] .App,
-body[data-theme="dark"] .main-content {
-  background-color: #171a21;
-}
-
-body[data-theme="dark"] .navbar.bg-white {
-  background-color: #222733 !important;
-}
-
-body[data-theme="dark"] .navbar .navbar-brand,
-body[data-theme="dark"] .navbar .nav-link {
-  color: #e8eaf0 !important;
-}
-
-body[data-theme="dark"] .navbar .navbar-brand:hover,
-body[data-theme="dark"] .navbar .nav-link:hover,
-body[data-theme="dark"] .navbar .nav-link.active {
-  color: #e74c3c !important;
-}
-
-body[data-theme="dark"] .navbar-toggler {
-  border-color: #8992a3;
-}
-
-body[data-theme="dark"] .navbar-toggler-icon {
-  filter: invert(1);
-}
-
-.theme-toggle {
-  width: 42px;
-  height: 42px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 12px;
-  border-radius: 50%;
-}
-
-body[data-theme="dark"] .theme-toggle {
-  color: #f5c542;
-  border-color: #8992a3;
-}
-
-body[data-theme="dark"] main section {
-  background-color: #1e232d !important;
-  color: #e8eaf0;
-}
-
-body[data-theme="dark"] main :is(h1, h2, h3, h4, h5, h6, p, li, label, small) {
-  color: #e8eaf0 !important;
-}
-
-body[data-theme="dark"]
-  main
-  :is(.card, [class*="-card"], .testimonial-item, .carousel-item > div) {
-  background-color: #292f3b;
-  color: #e8eaf0;
-}
-
-body[data-theme="dark"] main .contact-info-card {
-  background-color: #2c3036 !important;
-  border-color: #3b4352;
-  color: #e8eaf0 !important;
-}
-
-body[data-theme="dark"] main .contact-info-card h4,
-body[data-theme="dark"] main .contact-info-card a {
-  color: #e8eaf0 !important;
-}
-
-body[data-theme="dark"] main .contact-info-card p {
-  color: #eceff3 !important;
-}
-
-body[data-theme="dark"] main .contact-info-card a:hover {
-  color: #c0392b !important;
-}
-
-body[data-theme="dark"]
-  main
-  :is(input, textarea, select, .form-control, .form-select) {
-  background-color: #2c3e50;
-  color: hsl(240, 25%, 98%);
-  border-color: #2c3e50;
-}
-
-body[data-theme="dark"]
-  main
-  :is(input, textarea, select, .form-control, .form-select)::placeholder {
-  color: #cacada;
-}
-
-.main-content {
-  flex: 1 0 auto;
-  padding-top: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-a {
-  text-decoration: none;
-  color: #e74c3c;
-  transition: all 0.3s ease;
-}
-
-a:hover {
-  color: #c0392b;
-}
-
-.btn {
-  transition: all 0.3s ease;
-}
-
-.btn:focus {
-  box-shadow: none;
-}
-
-.btn-primary {
-  background-color: #e74c3c;
-  border-color: #e74c3c;
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-  background-color: #c0392b;
-  border-color: #c0392b;
-}
-
-.btn-outline-primary {
-  color: #e74c3c;
-  border-color: #e74c3c;
-}
-
-.btn-outline-primary:hover {
-  background-color: #e74c3c;
-  border-color: #e74c3c;
-}
-
-/* Hide Scrollbar Globally */
+/* Hide scrollbars globally, matching the existing site behaviour */
 html,
 body {
   -ms-overflow-style: none;
@@ -186,15 +57,238 @@ body::-webkit-scrollbar,
   display: none;
 }
 
-/* Animation Classes */
-.fade-in {
-  animation: fadeIn 1s ease-in-out;
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-@keyframes fadeIn {
+.main-content {
+  flex: 1 0 auto;
+  padding-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--wh-ink);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+p {
+  color: var(--wh-muted);
+}
+
+a {
+  color: var(--wh-red);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--wh-red-dark);
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--wh-red);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Shared layout helpers
+   -------------------------------------------------------------------------- */
+
+.wh-container {
+  width: min(100% - 40px, 1180px);
+  margin-inline: auto;
+}
+
+.wh-section {
+  padding: 84px 0;
+}
+
+.wh-eyebrow {
+  display: inline-block;
+  color: var(--wh-red);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.wh-section-heading {
+  max-width: 620px;
+  margin: 0 auto 46px;
+  text-align: center;
+}
+
+.wh-section-heading h2 {
+  margin: 10px 0 12px;
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.wh-section-heading p {
+  max-width: 540px;
+  margin: 0 auto;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.85;
+}
+
+.wh-section-heading--left {
+  margin-left: 0;
+  text-align: left;
+}
+
+.wh-section-heading--left p {
+  margin-left: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Shared buttons
+   -------------------------------------------------------------------------- */
+
+.wh-btn {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 0 24px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background: transparent;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.wh-btn svg {
+  font-size: 11px;
+  transition: transform 0.2s ease;
+}
+
+.wh-btn:hover svg {
+  transform: translateX(3px);
+}
+
+.wh-btn--primary {
+  border-color: var(--wh-red);
+  background: var(--wh-red);
+  color: #fff;
+}
+
+.wh-btn--primary:hover {
+  border-color: var(--wh-red-dark);
+  background: var(--wh-red-dark);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.wh-btn--outline {
+  border-color: var(--wh-ink);
+  background: transparent;
+  color: var(--wh-ink);
+}
+
+.wh-btn--outline:hover {
+  border-color: var(--wh-ink);
+  background: var(--wh-ink);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.wh-btn--light {
+  border-color: #fff;
+  background: #fff;
+  color: var(--wh-ink);
+}
+
+.wh-btn--light:hover {
+  border-color: var(--wh-warm-strong);
+  background: var(--wh-warm-strong);
+  color: var(--wh-ink);
+  transform: translateY(-2px);
+}
+
+.wh-btn--ghost-light {
+  border-color: rgba(255, 255, 255, 0.62);
+  background: transparent;
+  color: #fff;
+}
+
+.wh-btn--ghost-light:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   Bootstrap safety net for the few remaining Bootstrap surfaces
+   -------------------------------------------------------------------------- */
+
+.btn {
+  transition: all 0.2s ease;
+}
+
+.btn:focus,
+.btn:focus-visible {
+  box-shadow: none;
+}
+
+.btn-primary {
+  border-color: var(--wh-red);
+  background-color: var(--wh-red);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  border-color: var(--wh-red-dark);
+  background-color: var(--wh-red-dark);
+}
+
+/* --------------------------------------------------------------------------
+   Utilities / animations
+   -------------------------------------------------------------------------- */
+
+.fade-in {
+  animation: whFadeIn 0.9s ease both;
+}
+
+@keyframes whFadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
@@ -202,38 +296,46 @@ body::-webkit-scrollbar,
   }
 }
 
-/* Responsive Adjustments */
-@media (max-width: 992px) {
-  .container {
-    max-width: 100%;
-    padding: 0 20px;
+@media (max-width: 900px) {
+  .wh-section {
+    padding: 64px 0;
+  }
+
+  .wh-container {
+    width: min(100% - 36px, 720px);
+  }
+
+  .wh-section-heading {
+    margin-bottom: 38px;
   }
 }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2.5rem;
+@media (max-width: 560px) {
+  .wh-section {
+    padding: 52px 0;
   }
 
-  h2 {
-    font-size: 2rem;
+  .wh-container {
+    width: min(100% - 32px, 520px);
   }
 
-  section {
-    padding: 60px 0;
+  .wh-btn {
+    min-height: 44px;
+    padding: 0 18px;
+    font-size: 9px;
   }
 }
 
-@media (max-width: 576px) {
-  h1 {
-    font-size: 2rem;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  h2 {
-    font-size: 1.8rem;
-  }
-
-  section {
-    padding: 40px 0;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

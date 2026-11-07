@@ -6,7 +6,7 @@ import "./members.css";
 const members = [
   { name: "Elina Kadzo Karisa", image: null },
   { name: "Francis Bobi Katana", image: "/images/Bobby.jpeg" },
-  { name: "Kakwiri Stephen Ngota", image: "/images/kakwir.jpeg" },
+  { name: "Kakwiri Stephen Ngota", image: "/images/kakwiri5.jpeg" },
   { name: "Halima Ali Menza", image: null },
   { name: "Esther Kache Koi", image: null },
   { name: "Emily Sidi Koi", image: null },

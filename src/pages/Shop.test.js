@@ -166,6 +166,6 @@ test("shows the not-found page for an unknown product", () => {
   renderShop("/shop/not-a-product");
 
   expect(
-    screen.getByRole("heading", { name: "Page Not Found" }),
+    screen.getByRole("heading", { name: /page not found/i }),
   ).toBeInTheDocument();
 });

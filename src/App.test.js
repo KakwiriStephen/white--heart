@@ -5,13 +5,26 @@ afterEach(() => {
   jest.restoreAllMocks();
 });
 
+test("renders the WhiteHeart home page", () => {
+  render(<App />);
+
+  expect(
+    screen.getByRole("heading", {
+      level: 1,
+      name: /together, we can make a difference/i,
+    }),
+  ).toBeInTheDocument();
+});
+
 test("scrolls to the top when navigating to another page", () => {
   const scrollTo = jest.spyOn(window, "scrollTo").mockImplementation(() => {});
   render(<App />);
-
-  const aboutLink = screen.getAllByRole("link", { name: /about us/i })[0];
   scrollTo.mockClear();
-  fireEvent.click(aboutLink);
+  fireEvent.click(screen.getByRole("link", { name: /about us/i }));
 
-  expect(scrollTo).toHaveBeenCalledWith(0, 0);
+  expect(scrollTo).toHaveBeenCalledWith({
+    top: 0,
+    left: 0,
+    behavior: "auto",
+  });
 });

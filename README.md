@@ -1,6 +1,6 @@
 # WhiteHeart Charity Website
 
-![WhiteHeart Charity Logo](public/images/logo.png)
+![WhiteHeart Charity Logo](public/images/wlogo.png)
 
 A modern, responsive charity website built with React, designed to showcase the organization's mission, causes, events, and facilitate donations.
 

@@ -1,254 +1,194 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import {
-  FaHeart,
+  FaArrowRight,
+  FaArrowUp,
+  FaCheck,
+  FaEnvelope,
   FaFacebookF,
-  FaTwitter,
+  FaHeart,
   FaInstagram,
-  FaTiktok,
   FaMapMarkerAlt,
   FaPhone,
-  FaEnvelope,
+  FaTiktok,
+  FaTwitter,
 } from "react-icons/fa";
+import "./Footer.css";
 
-const StyledFooter = styled.footer`
-  background-color: #2c3e50;
-  color: #ecf0f1;
-  padding: 70px 0 0;
+const exploreLinks = [
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About us" },
+  { to: "/causes", label: "Our causes" },
+  { to: "/events", label: "Events" },
+  { to: "/gallery", label: "Gallery" },
+];
 
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+const involvedLinks = [
+  { to: "/shop", label: "Shop" },
+  { to: "/members", label: "Our members" },
+  { to: "/donate", label: "Donate" },
+  { to: "/contact", label: "Contact us" },
+];
 
-    img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      margin-right: 15px;
-    }
-  }
-
-  .footer-about {
-    margin-bottom: 25px;
-    line-height: 1.8;
-  }
-
-  h5 {
-    color: #fff;
-    font-weight: 600;
-    margin-bottom: 25px;
-    position: relative;
-
-    &:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -10px;
-      width: 50px;
-      height: 2px;
-      background-color: #e74c3c;
-    }
-  }
-
-  .footer-links {
-    list-style: none;
-    padding: 0;
-
-    li {
-      margin-bottom: 15px;
-
-      a {
-        color: #ecf0f1;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        display: inline-block;
-
-        &:hover {
-          color: #e74c3c;
-          transform: translateX(5px);
-        }
-      }
-    }
-  }
-
-  .contact-info {
-    list-style: none;
-    padding: 0;
-
-    li {
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-
-      svg {
-        margin-right: 10px;
-        color: #e74c3c;
-      }
-    }
-  }
-
-  .social-icons {
-    display: flex;
-    margin-top: 20px;
-
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      margin-right: 10px;
-      transition: all 0.3s ease;
-
-      &:hover {
-        background-color: #e74c3c;
-        transform: translateY(-3px);
-      }
-    }
-  }
-
-  .copyright {
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 50px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-
-    p {
-      margin-bottom: 0;
-    }
-
-    a {
-      color: #e74c3c;
-      text-decoration: none;
-    }
-  }
-`;
+const socials = [
+  { href: "https://facebook.com", label: "Facebook", icon: <FaFacebookF /> },
+  { href: "https://twitter.com", label: "Twitter", icon: <FaTwitter /> },
+  { href: "https://instagram.com", label: "Instagram", icon: <FaInstagram /> },
+  { href: "https://tiktok.com", label: "TikTok", icon: <FaTiktok /> },
+];
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (event) => {
+    event.preventDefault();
+    if (!email.trim()) return;
+    setSubscribed(true);
+    setEmail("");
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <StyledFooter>
-      <Container>
-        <Row>
-          <Col lg={4} md={6} className="mb-5 mb-lg-0">
-            <div className="footer-logo">
-              <img src="images/wlogo.png" alt="WhiteHeart Charity Logo" />
-              <span>WhiteHeart Charity</span>
-            </div>
-            <p className="footer-about">
-              WhiteHeart Charity is dedicated to making a positive impact in the
-              world through compassion, generosity, and community action.
-              Together, we can create a better future for all.
+    <footer className="wh-footer">
+      <div className="wh-container wh-footer__inner">
+        <div className="wh-footer__cta">
+          <div className="wh-footer__cta-copy">
+            <span className="wh-eyebrow">Small acts · lasting change</span>
+            <h2>Stay close to the work we do.</h2>
+            <p>
+              Field stories, upcoming events and simple ways to help — delivered
+              to your inbox. No noise, just impact.
             </p>
-            <div className="social-icons">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaFacebookF />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTwitter />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaInstagram />
-              </a>
-              <a
-                href="https://tiktok.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTiktok />
-              </a>
+          </div>
+
+          <form className="wh-footer__form" onSubmit={handleSubscribe}>
+            <div className="wh-footer__field">
+              <FaEnvelope aria-hidden="true" />
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="Your email address"
+                aria-label="Email address"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
             </div>
-          </Col>
+            <button type="submit" className="wh-footer__submit">
+              {subscribed ? (
+                <>
+                  <FaCheck aria-hidden="true" /> Subscribed
+                </>
+              ) : (
+                <>
+                  Subscribe <FaArrowRight aria-hidden="true" />
+                </>
+              )}
+            </button>
+            <p className="wh-footer__form-note" role="status" aria-live="polite">
+              {subscribed
+                ? "Thank you — you are on the list."
+                : "We respect your inbox. Unsubscribe at any time."}
+            </p>
+          </form>
+        </div>
 
-          <Col lg={2} md={6} className="mb-5 mb-lg-0">
-            <h5>Quick Links</h5>
-            <ul className="footer-links">
+        <div className="wh-footer__grid">
+          <div className="wh-footer__brand">
+            <Link to="/" className="wh-footer__brand-link">
+              <img src="/images/wlogo.png" alt="WhiteHeart Charity" />
+              <span>
+                <strong>WhiteHeart</strong>
+                <small>Charity</small>
+              </span>
+            </Link>
+            <p>
+              A community-driven charity built on compassion, generosity and
+              collective action — together we build a better future for all.
+            </p>
+            <div className="wh-footer__socials">
+              {socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <nav className="wh-footer__col" aria-label="Explore">
+            <h3>Explore</h3>
+            <ul>
+              {exploreLinks.map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to}>{link.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav className="wh-footer__col" aria-label="Get involved">
+            <h3>Get involved</h3>
+            <ul>
+              {involvedLinks.map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to}>{link.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="wh-footer__col">
+            <h3>Reach us</h3>
+            <ul className="wh-footer__contact">
               <li>
-                <Link to="/">Home</Link>
+                <FaMapMarkerAlt aria-hidden="true" />
+                <span>Malindi, Kilifi County, Kenya</span>
               </li>
               <li>
-                <Link to="/about">About Us</Link>
+                <FaPhone aria-hidden="true" />
+                <a href="tel:+254711995734">+254 711 995734</a>
               </li>
               <li>
-                <Link to="/causes">Our Causes</Link>
-              </li>
-              <li>
-                <Link to="/events">Events</Link>
-              </li>
-              <li>
-                <Link to="/donate">Donate</Link>
+                <FaEnvelope aria-hidden="true" />
+                <a href="mailto:officialwhiteheartinfo@gmail.com">
+                  officialwhiteheartinfo@gmail.com
+                </a>
               </li>
             </ul>
-          </Col>
-
-          <Col lg={3} md={6} className="mb-5 mb-md-0">
-            <h5>Our Causes</h5>
-            <ul className="footer-links">
-              <li>
-                <Link to="/causes">Clean Water</Link>
-              </li>
-              <li>
-                <Link to="/causes">Education</Link>
-              </li>
-              <li>
-                <Link to="/causes">Healthcare</Link>
-              </li>
-              <li>
-                <Link to="/causes">Food & Shelter</Link>
-              </li>
-              <li>
-                <Link to="/causes">Environment</Link>
-              </li>
-            </ul>
-          </Col>
-
-          <Col lg={3} md={6}>
-            <h5>Contact Us</h5>
-            <ul className="contact-info">
-              <li>
-                <FaMapMarkerAlt />
-                <span>Malindi, Kenya</span>
-              </li>
-              <li>
-                <FaPhone />
-                <span>+2 (54) 7119955734</span>
-              </li>
-              <li>
-                <FaEnvelope />
-                <span>info@whiteheartcharity.org</span>
-              </li>
-            </ul>
-          </Col>
-        </Row>
-      </Container>
-
-      <div className="copyright">
-        <Container>
-          <p>
-            © {new Date().getFullYear()} WhiteHeart Charity. All Rights
-            Reserved. Designed with <FaHeart style={{ color: "#e74c3c" }} /> for
-            a better world.
-          </p>
-        </Container>
+            <Link to="/donate" className="wh-footer__donate">
+              Donate today <FaHeart aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
       </div>
-    </StyledFooter>
+
+      <div className="wh-footer__bar">
+        <div className="wh-container wh-footer__bar-inner">
+          <p>
+            © {new Date().getFullYear()} WhiteHeart Charity. All rights
+            reserved.
+          </p>
+          <p>
+            Made with{" "}
+            <FaHeart className="wh-footer__heart" aria-hidden="true" /> for a
+            better world.
+          </p>
+          <button type="button" className="wh-footer__top" onClick={scrollToTop}>
+            Back to top <FaArrowUp aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+    </footer>
   );
 };
 
