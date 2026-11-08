@@ -15,7 +15,7 @@ const members = [
   { name: "Faith Mutisya", image: "/images/fay.jpeg" },
   { name: "Agnes Karisa Dhuri", image: null },
   { name: "Julius Sifa", image: null },
-  { name: "Marion Bahati Kazungu", image: null },
+  { name: "Marion Bahati Kazungu", image: "/image/Marion.jpeg" },
   { name: "Robert Chai", image: null },
   { name: "Collins Kazungu", image: "/images/Collins-Tyga.jpeg" },
 ];
