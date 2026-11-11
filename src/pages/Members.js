@@ -4,18 +4,18 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "./members.css";
 
 const members = [
-  { name: "Elina Kadzo Karisa", image: null },
+  { name: "Elina Kadzo Karisa", image: "/images/elina.jpeg" },
   { name: "Francis Bobi Katana", image: "/images/Bobby.jpeg" },
   { name: "Kakwiri Stephen Ngota", image: "/images/kakwiri5.jpeg" },
   { name: "Halima Ali Menza", image: null },
-  { name: "Esther Kache Koi", image: null },
-  { name: "Emily Sidi Koi", image: null },
+  { name: "Esther Kache Koi", image: "/images/esther.jpeg" },
+  { name: "Emily Sidi Koi", image: "/images/emily.jpeg" },
   { name: "Constance Susan Karisa", image: null },
   { name: "Ngome Simba James", image: null },
   { name: "Faith Mutisya", image: "/images/fay.jpeg" },
   { name: "Agnes Karisa Dhuri", image: null },
   { name: "Julius Sifa", image: null },
-  { name: "Marion Bahati Kazungu", image: "/image/Marion.jpeg" },
+  { name: "Marion Bahati Kazungu", image: "/images/Marion.jpeg" },
   { name: "Robert Chai", image: null },
   { name: "Collins Kazungu", image: "/images/Collins-Tyga.jpeg" },
 ];
