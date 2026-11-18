@@ -4,25 +4,94 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "./members.css";
 
 const members = [
-  { name: "Elina Kadzo Karisa", image: null },
-  { name: "Francis Bobi Katana", image: null },
-  { name: "Kakwiri Stephen Ngota", image: "/images/kakwiri5.jpeg" },
-  { name: "Halima Ali Menza", image: null },
-  { name: "Esther Kache Koi", image: null },
-  { name: "Emily Sidi Koi", image: null },
-  { name: "Constance Susan Karisa", image: null },
-  { name: "Ngome Simba James", image: null },
-  { name: "Faith Mutisya", image: "/images/fay.jpeg" },
-  { name: "Agnes Karisa Dhuri", image: null },
-  { name: "Julius Sifa", image: null },
-  { name: "Marion Bahati Kazungu", image: null },
-  { name: "Robert Chai", image: null },
-  { name: "Collins Kazungu", image: null },
+  {
+    name: "Elina Kadzo Karisa",
+    image: "/images/elina.jpeg",
+    description:
+      "Elina is a  a teacher and a valued member of White Hearts, supporting the group’s community and compassion initiatives.",
+  },
+  {
+    name: "Francis Bobi Katana",
+    image: "/images/Bobby.jpeg",
+    description:
+      "Francis brings his commitment and teamwork to White Hearts’ community outreach and support activities.",
+  },
+  {
+    name: "Kakwiri Stephen Ngota",
+    image: "/images/kakwiri5.jpeg",
+    description:
+      "Stephen is Senior Software Engineer and a dedicated member of White Hearts, contributing to the group’s mission of community support.",
+  },
+
+  {
+    name: "Halima Ali Menza",
+    image: null,
+    description:
+      "Halima contributes to the White Hearts community with dedication to supporting people and families in need.",
+  },
+  {
+    name: "Esther Kache Koi",
+    image: "/images/esther.jpeg",
+    description:
+      "Esther supports White Hearts through her active participation in the group’s community-focused work.",
+  },
+  {
+    name: "Emily Sidi Koi",
+    image: "/images/emily.jpeg",
+    description:
+      "Emily is committed to the group’s mission of compassion, togetherness, and meaningful local impact.",
+  },
+  {
+    name: "Constance Susan Karisa",
+    image: "/images/susan.jpeg",
+    description:
+      "Constance is a valued member whose contributions help strengthen White Hearts’ community programs.",
+  },
+  {
+    name: "Ngome Simba James",
+    image: "/images/simba.jpeg",
+    description:
+      "Ngome is Junior Software Engineer and an active member of White Hearts, supporting the group’s community initiatives.",
+  },
+  {
+    name: "Faith Mutisya",
+    image: "/images/fay.jpeg",
+    description:
+      "Faith participates in White Hearts’ efforts to promote kindness, connection, and community support.",
+  },
+  {
+    name: "Agnes Karisa Dhuri",
+    image: null,
+    description:
+      "Agnes contributes her commitment and care to the shared work of the White Hearts community.",
+  },
+  {
+    name: "Julius Sifa",
+    image: "/images/sifa.jpeg",
+    description:
+      "Julius is an active member who helps White Hearts turn compassion into practical community action.",
+  },
+  {
+    name: "Marion Bahati Kazungu",
+    image: "/images/Marion.jpeg",
+    description:
+      "Marion supports White Hearts through involvement in the group’s outreach and community activities.",
+  },
+  {
+    name: "Robert Chai",
+    image: null,
+    description:
+      "Robert is committed to working alongside fellow members to support and uplift the community.",
+  },
+  {
+    name: "Collins Kazungu",
+    image: "/images/Collins-Tyga.jpeg",
+    description:
+      "Collins brings his energy and participation to White Hearts’ mission of service and compassion.",
+  },
 ];
 
 const MEMBERS_PER_PAGE = 6;
-const memberDescription =
-  "Working alongside fellow members to support the community with compassion and care.";
 
 const getInitials = (name) =>
   name
@@ -50,14 +119,16 @@ function MemberProfile({ member, index }) {
           <span className="member-profile__number">
             {String(index + 1).padStart(2, "0")}
           </span>
-          <span className="member-profile__initials">{getInitials(member.name)}</span>
+          <span className="member-profile__initials">
+            {getInitials(member.name)}
+          </span>
           <small>PORTRAIT COMING SOON</small>
         </div>
       )}
       <div className="member-profile__body">
         <span className="member-profile__label">WHITE HEARTS · MEMBER</span>
         <h2>{member.name}</h2>
-        <p>{memberDescription}</p>
+        <p>{member.description}</p>
       </div>
     </article>
   );
@@ -95,9 +166,16 @@ const Members = () => {
               caring, committed community.
             </p>
           </div>
-          <div className="members-hero__count" aria-label={`${members.length} members`}>
+          <div
+            className="members-hero__count"
+            aria-label={`${members.length} members`}
+          >
             <strong>{String(members.length).padStart(2, "0")}</strong>
-            <span>MEMBERS<br />AND COUNTING</span>
+            <span>
+              MEMBERS
+              <br />
+              AND COUNTING
+            </span>
           </div>
         </div>
       </header>

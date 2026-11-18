@@ -1,24 +1,24 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 // Layout Components
-import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
-import ScrollToTop from './components/common/ScrollToTop';
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 // Pages
-import Home from './pages/Home';
-import About from './pages/About';
-import Causes from './pages/Causes';
-import Donate from './pages/Donate';
-import Events from './pages/Events';
-import Gallery from './pages/Gallery';
-import Contact from './pages/Contact';
-import Shop from './pages/Shop';
-import Members from './pages/Members';
-import NotFound from './pages/NotFound';
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Causes from "./pages/Causes";
+import Donate from "./pages/Donate";
+import Events from "./pages/Events";
+import Gallery from "./pages/Gallery";
+import Contact from "./pages/Contact";
+import Shop from "./pages/Shop";
+import Members from "./pages/Members";
+import NotFound from "./pages/NotFound";
 
 function AppLayout() {
   return (
